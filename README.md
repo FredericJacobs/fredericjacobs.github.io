@@ -1,4 +1,4 @@
 fredericjacobs.com
 ==================
 
-Just a splash/homepage
+Check out the gh-pages branch
