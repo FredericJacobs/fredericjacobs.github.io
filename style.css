@@ -1,0 +1,168 @@
+html {
+  background: url(img/background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  font-family: 'San Francisco', sans-serif;
+  text-transform: uppercase;
+}
+
+.language-rust {
+  text-transform:none;
+  width: 75%;
+  font-size: 75%;
+  border-radius: 0.3rem;
+}
+
+h1 {
+  background: #5959FF;
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  margin: 0;
+}
+.clover {
+  height: 2.9rem;
+  width: 2.9rem;
+  margin: 0.1rem 1.1rem;
+}
+#top * {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5rem;
+}
+#bop {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+}
+
+#fop {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2rem;
+  padding-bottom: 1rem;
+  transform: scale(0.75,0.75);
+}
+
+a:visited {
+    color: gray;
+}
+
+a:link {
+    color: white;
+}
+
+#fop img {
+  height: 2rem;
+  margin: 0 0.6rem;
+}
+#fop img#twitter {
+  height: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+#fop img#keys {
+  height: 1.5rem;
+  margin-bottom: 0.25rem;
+  margin-left: 0.3
+}
+#fop img#mail {
+  height: 1.8rem;
+  margin-bottom: 0.1rem;
+}
+.dot:before {
+  content: " / ";
+  color: #E9423A;
+}
+@media (max-width: 321px) {
+  #fop {
+    position: static;
+    margin-top: 5rem;
+  }
+  #fop img {
+    height: 3rem;
+    margin: 0 1rem;
+  }
+  #fop img#twitter {
+    height: 2.5rem;
+    margin-bottom: 0.25rem;
+  }
+}
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 100;
+  src: url("fonts/sanfranciscodisplay-ultralight-webfont.woff2");
+}
+
+/** Thin */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 200;
+  src: url("fonts/sanfranciscodisplay-thin-webfont.woff2");
+}
+
+/** Medium */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: normal;
+  src: url("fonts/sanfranciscodisplay-medium-webfont.woff2");
+}
+
+/** Semi Bold */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 500;
+  src: url("fonts/sanfranciscodisplay-semibold-webfont.woff2");
+}
+
+/** Bold */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: bold;
+  src: url("fonts/sanfranciscodisplay-bold-webfont.woff2");
+}
+
+@media (min-width: 320px) {
+  html {
+    font-size: 10px;
+  }
+  .language-rust {
+    font-size: 5px;
+  }
+}
+@media (min-width: 320px) and (orientation: landscape) {
+  html {
+    font-size: 15px;
+  }
+  .language-rust {
+    font-size: 10px;
+  }
+}
+@media (min-width: 589px) {
+  html {
+    font-size: 20px;
+  }
+  .language-rust {
+    font-size: 10px;
+  }
+}
+@media (min-width: 733px) {
+  html {
+    font-size: 25px;
+  }
+  .language-rust {
+    font-size: 12px;
+  }
+}
+@media (min-width: 870px) {
+  html {
+    font-size: 30px;
+  }
+  .language-rust {
+    font-size: 16px;
+  }
+}
