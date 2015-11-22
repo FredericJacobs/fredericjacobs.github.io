@@ -11,4 +11,8 @@ pids
 logs
 results
 
+_site/
+.sass-cache/
+.jekyll-metadata
+
 npm-debug.log
