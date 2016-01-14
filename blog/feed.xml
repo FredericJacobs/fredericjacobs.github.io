@@ -5,9 +5,87 @@
     <description></description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Dec 2015 19:38:30 +0100</pubDate>
-    <lastBuildDate>Fri, 18 Dec 2015 19:38:30 +0100</lastBuildDate>
+    <pubDate>Thu, 14 Jan 2016 15:12:12 +0100</pubDate>
+    <lastBuildDate>Thu, 14 Jan 2016 15:12:12 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>On SMS logins: an example from Telegram in Iran</title>
+        <description>&lt;p&gt;Most mobile messaging apps these days use SMS as a login technique. It’s really convenient because it doesn’t require the user to remember yet another username or identifier and telcos are taking care of the identity management such as re-assigning the phone number to you if you lose your phone.&lt;/p&gt;
+
+&lt;p&gt;SMS are trivial to intercept for your telecom provider. And in almost all countries, they are actively cooperating with the state to help intercept text messages and phone calls. But it’s not only your telecom provider, devices like IMSI catchers provide a cheap and efficient way of intercepting text messages for a local adversary.&lt;/p&gt;
+
+&lt;p&gt;Applications such as Telegram messenger, not only allows a user to signup with an SMS, but also enables them to log in to see previous messages. The application stores your messages, content and contacts as they disclose in their &lt;a href=&quot;https://telegram.org/privacy&quot;&gt;privacy policy&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We store messages, photos, videos and documents from your cloud chats on our servers, so that you can access your data from any of your devices anytime and use our instant server search to quickly access your messages from waaay back.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;An attacker, that can intercept a single SMS is therefore capable of reading your messages from “waaay back”.&lt;/p&gt;
+
+&lt;p&gt;Attacks like that are not just theoretical. Let’s take a recent example, Iran.&lt;/p&gt;
+
+&lt;p&gt;Telegram has gotten a huge amount of signups in Iran and &lt;a href=&quot;https://twitter.com/durov/status/687254676157378560&quot;&gt;according to Durov&lt;/a&gt;, its founder, Iranian users constitute up to 20% of their user base.&lt;/p&gt;
+
+&lt;p&gt;When Telegram was getting some traction over the summer (June 2015), Iranian users started getting unsolicited login messages to sign into the Telegram website, which were believed to be related to a Telegram interception program operated by Iranian intelligence. Check the replies to this tweet:&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;کیا این پیام رو امروز از &lt;a href=&quot;https://twitter.com/hashtag/%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85?src=hash&quot;&gt;#تلگرام&lt;/a&gt; گرفتند؟&amp;#10;&lt;a href=&quot;https://twitter.com/hashtag/%D8%B1%DB%8C%D8%AA%D9%88%DB%8C%DB%8C%D8%AA?src=hash&quot;&gt;#ریتوییت&lt;/a&gt;&amp;#10;&amp;#10;&lt;a href=&quot;https://twitter.com/hashtag/%D8%A7%D8%B3%D9%BE%D9%85?src=hash&quot;&gt;#اسپم&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/%D8%A7%D9%85%D9%86%DB%8C%D8%AA?src=hash&quot;&gt;#امنیت&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/Iran?src=hash&quot;&gt;#Iran&lt;/a&gt; &lt;a href=&quot;http://t.co/xxEJBZbWSf&quot;&gt;pic.twitter.com/xxEJBZbWSf&lt;/a&gt;&lt;/p&gt;&amp;mdash; Nariman (@NarimanGharib) &lt;a href=&quot;https://twitter.com/NarimanGharib/status/612310940453892096&quot;&gt;June 20, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Over the past few months, there has been a lot of chatter about the relationship between Telegram and Iran. It is widely known that Iran blocks services that blinds their intelligence branches and that are unwilling to cooperate. Durov repeatedly came out claiming that they were not collaborating with Iran outside of blocking porn and jihadi channels (for public content), which they are doing worldwide.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/persianbanoo&quot;&gt;@persianbanoo&lt;/a&gt; &lt;a href=&quot;https://twitter.com/SinaKK&quot;&gt;@SinaKK&lt;/a&gt; We shut down porn / ISIS channels based on the reports from users. &lt;a href=&quot;https://twitter.com/telegram&quot;&gt;@telegram&lt;/a&gt; never does political censorship.&lt;/p&gt;&amp;mdash; Pavel Durov (@durov) &lt;a href=&quot;https://twitter.com/durov/status/687315543448285184&quot;&gt;January 13, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;More recently, some popular Telegram channels promoting political poems or ideologies have been shut down. Iranian activists asked Durov about why those political channels were suspended.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Mr &lt;a href=&quot;https://twitter.com/durov&quot;&gt;@durov&lt;/a&gt; can you explain why you closed the PDKI channel in &lt;a href=&quot;https://twitter.com/telegram&quot;&gt;@telegram&lt;/a&gt;? :)&amp;#10;&lt;a href=&quot;https://twitter.com/hashtag/Censorship?src=hash&quot;&gt;#Censorship&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/Telegram?src=hash&quot;&gt;#Telegram&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/PDKI?src=hash&quot;&gt;#PDKI&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/Iran?src=hash&quot;&gt;#Iran&lt;/a&gt; &lt;a href=&quot;https://t.co/wvUrCes7fT&quot;&gt;pic.twitter.com/wvUrCes7fT&lt;/a&gt;&lt;/p&gt;&amp;mdash; Kevin Miston (@KevinMiston) &lt;a href=&quot;https://twitter.com/KevinMiston/status/686537567051890688&quot;&gt;January 11, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;یک روز از خواب پا میشی، می بینی رفتی به...&amp;#10;کانال تلگرامم حذف شد/ کردند؟! &lt;a href=&quot;https://t.co/C5KMj99jhg&quot;&gt;pic.twitter.com/C5KMj99jhg&lt;/a&gt;&lt;/p&gt;&amp;mdash; فاطمه اختصاری (@fatemeekhtesari) &lt;a href=&quot;https://twitter.com/fatemeekhtesari/status/686847201797103616&quot;&gt;January 12, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;After investigation, Telegram said that the channels were not suspended, but deleted by their owners.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/KevinMiston&quot;&gt;@KevinMiston&lt;/a&gt; &lt;a href=&quot;https://twitter.com/durov&quot;&gt;@durov&lt;/a&gt; Investigation showed: The owner deleted his account on Jan 10, so all his channels became unavailable. Nothing blocked.&lt;/p&gt;&amp;mdash; Telegram Messenger (@telegram) &lt;a href=&quot;https://twitter.com/telegram/status/686656336059318273&quot;&gt;January 11, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;These are probably just a few examples of hacked channels. &lt;em&gt;Unlike surveillance, censorship can be observed.&lt;/em&gt; It’s only because Iran started deleting popular channels that it became clear that they were hacking into Telegram accounts but how many activists got arrested over Telegram discussions that were intercepted? That is significantly more difficult to evaluate.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Further investigation of some of the cases:IRI hacking into accounts,not censorship.Tnx &lt;a href=&quot;https://twitter.com/telegram&quot;&gt;@telegram&lt;/a&gt; 4 being responsive&amp;#10;&lt;a href=&quot;https://t.co/QGk7picBcF&quot;&gt;https://t.co/QGk7picBcF&lt;/a&gt;&lt;/p&gt;&amp;mdash; Reza Ghazinouri (@ghazinouri) &lt;a href=&quot;https://twitter.com/ghazinouri/status/687399529918894080&quot;&gt;January 13, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Despite good intentions, it’s becoming clearer that a good number of activists who trusted the application that branded itself as the “safest” messaging app are getting their account hacked and channels deleted.&lt;/p&gt;
+
+&lt;p&gt;Countries like Iran tend to be blocking applications that blinds their intelligence as they get popular. Repeated claims by the authorities that they wouldn’t block Telegram should already have sounded suspicious. &lt;strong&gt;If a single SMS enables you to get access to a user’s account and data, you designed your system with a backdoor that any serious adversary can exploit.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;does-this-affect-only-telegram&quot;&gt;Does this affect only Telegram?&lt;/h2&gt;
+
+&lt;p&gt;No, other services where you only need to send an SMS to log in are affected by this. But unlike Telegram, a lot of other messaging applications don’t store your messages and content server-side.&lt;/p&gt;
+
+&lt;p&gt;This is a reminder for all users of messaging apps in risky environment, &lt;strong&gt;verify fingerprints&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;SMS activation in most messaging apps can be compared to your server sign in for Jabber when using OTR. It is just your login to the message server, unless you verify fingerprints, you are still at risk of interception.&lt;/p&gt;
+
+&lt;h2 id=&quot;mitigations&quot;&gt;Mitigations:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://telegram.org/blog/sessions-and-2-step-verification&quot;&gt;Enable 2-Step authentication (and verify active sessions while you’re at it)&lt;/a&gt; and only use “secret chats”.&lt;/li&gt;
+  &lt;li&gt;Or just move to an application that won’t store plaintext messages on their servers if you’re operating in such a risky environment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;note-on-two-factor-authentication&quot;&gt;Note on two-factor authentication&lt;/h2&gt;
+
+&lt;p&gt;Because of the weaknesses of the SMS protocol, it’s generally safer to setup two-factor authentication with a YubiKey or TOTP (such as Google Authenticator). Unfortunately, many services don’t let you opt-out of SMS fallback for second factor authentication.&lt;/p&gt;
+
+&lt;p&gt;Disclosure: I have previously worked on encrypted messaging software.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 14 Jan 2016 14:00:00 +0100</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2016/01/14/sms-login/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/01/14/sms-login/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Some bits from the NSA COMSEC Guide</title>

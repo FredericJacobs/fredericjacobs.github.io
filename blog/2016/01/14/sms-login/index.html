@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On SMS logins: an example from Telegram in Iran - BrainOverfl0w</title>
+  <link rel="stylesheet" href="/blog/css/main.css">
+  <link rel="canonical" href="https://www.fredericjacobs.com/blog/2016/01/14/sms-login/">
+  <link rel="alternate" type="application/rss+xml" title="BrainOverfl0w" href="https://www.fredericjacobs.com/blog/feed.xml">
+</head>
+
+  <body>
+    <header class="site-header">
+      <a class="site-title" href="/blog/">BrainOverfl0w</a>
+    </header>
+    <div class="page-content">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">On SMS logins: an example from Telegram in Iran</h1>
+    <p class="post-meta"><time datetime="2016-01-14T14:00:00+01:00" itemprop="datePublished">Jan 14, 2016</time></p>
+  </header>
+  <div class="post-content" itemprop="articleBody">
+    <p>Most mobile messaging apps these days use SMS as a login technique. It’s really convenient because it doesn’t require the user to remember yet another username or identifier and telcos are taking care of the identity management such as re-assigning the phone number to you if you lose your phone.</p>
+
+<p>SMS are trivial to intercept for your telecom provider. And in almost all countries, they are actively cooperating with the state to help intercept text messages and phone calls. But it’s not only your telecom provider, devices like IMSI catchers provide a cheap and efficient way of intercepting text messages for a local adversary.</p>
+
+<p>Applications such as Telegram messenger, not only allows a user to signup with an SMS, but also enables them to log in to see previous messages. The application stores your messages, content and contacts as they disclose in their <a href="https://telegram.org/privacy">privacy policy</a>:</p>
+
+<blockquote>
+  <p>We store messages, photos, videos and documents from your cloud chats on our servers, so that you can access your data from any of your devices anytime and use our instant server search to quickly access your messages from waaay back.</p>
+</blockquote>
+
+<p>An attacker, that can intercept a single SMS is therefore capable of reading your messages from “waaay back”.</p>
+
+<p>Attacks like that are not just theoretical. Let’s take a recent example, Iran.</p>
+
+<p>Telegram has gotten a huge amount of signups in Iran and <a href="https://twitter.com/durov/status/687254676157378560">according to Durov</a>, its founder, Iranian users constitute up to 20% of their user base.</p>
+
+<p>When Telegram was getting some traction over the summer (June 2015), Iranian users started getting unsolicited login messages to sign into the Telegram website, which were believed to be related to a Telegram interception program operated by Iranian intelligence. Check the replies to this tweet:</p>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="fa" dir="rtl">کیا این پیام رو امروز از <a href="https://twitter.com/hashtag/%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85?src=hash">#تلگرام</a> گرفتند؟&#10;<a href="https://twitter.com/hashtag/%D8%B1%DB%8C%D8%AA%D9%88%DB%8C%DB%8C%D8%AA?src=hash">#ریتوییت</a>&#10;&#10;<a href="https://twitter.com/hashtag/%D8%A7%D8%B3%D9%BE%D9%85?src=hash">#اسپم</a> <a href="https://twitter.com/hashtag/%D8%A7%D9%85%D9%86%DB%8C%D8%AA?src=hash">#امنیت</a> <a href="https://twitter.com/hashtag/Iran?src=hash">#Iran</a> <a href="http://t.co/xxEJBZbWSf">pic.twitter.com/xxEJBZbWSf</a></p>&mdash; Nariman (@NarimanGharib) <a href="https://twitter.com/NarimanGharib/status/612310940453892096">June 20, 2015</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Over the past few months, there has been a lot of chatter about the relationship between Telegram and Iran. It is widely known that Iran blocks services that blinds their intelligence branches and that are unwilling to cooperate. Durov repeatedly came out claiming that they were not collaborating with Iran outside of blocking porn and jihadi channels (for public content), which they are doing worldwide.</p>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/persianbanoo">@persianbanoo</a> <a href="https://twitter.com/SinaKK">@SinaKK</a> We shut down porn / ISIS channels based on the reports from users. <a href="https://twitter.com/telegram">@telegram</a> never does political censorship.</p>&mdash; Pavel Durov (@durov) <a href="https://twitter.com/durov/status/687315543448285184">January 13, 2016</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>More recently, some popular Telegram channels promoting political poems or ideologies have been shut down. Iranian activists asked Durov about why those political channels were suspended.</p>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Mr <a href="https://twitter.com/durov">@durov</a> can you explain why you closed the PDKI channel in <a href="https://twitter.com/telegram">@telegram</a>? :)&#10;<a href="https://twitter.com/hashtag/Censorship?src=hash">#Censorship</a> <a href="https://twitter.com/hashtag/Telegram?src=hash">#Telegram</a> <a href="https://twitter.com/hashtag/PDKI?src=hash">#PDKI</a> <a href="https://twitter.com/hashtag/Iran?src=hash">#Iran</a> <a href="https://t.co/wvUrCes7fT">pic.twitter.com/wvUrCes7fT</a></p>&mdash; Kevin Miston (@KevinMiston) <a href="https://twitter.com/KevinMiston/status/686537567051890688">January 11, 2016</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="fa" dir="rtl">یک روز از خواب پا میشی، می بینی رفتی به...&#10;کانال تلگرامم حذف شد/ کردند؟! <a href="https://t.co/C5KMj99jhg">pic.twitter.com/C5KMj99jhg</a></p>&mdash; فاطمه اختصاری (@fatemeekhtesari) <a href="https://twitter.com/fatemeekhtesari/status/686847201797103616">January 12, 2016</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>After investigation, Telegram said that the channels were not suspended, but deleted by their owners.</p>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/KevinMiston">@KevinMiston</a> <a href="https://twitter.com/durov">@durov</a> Investigation showed: The owner deleted his account on Jan 10, so all his channels became unavailable. Nothing blocked.</p>&mdash; Telegram Messenger (@telegram) <a href="https://twitter.com/telegram/status/686656336059318273">January 11, 2016</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>These are probably just a few examples of hacked channels. <em>Unlike surveillance, censorship can be observed.</em> It’s only because Iran started deleting popular channels that it became clear that they were hacking into Telegram accounts but how many activists got arrested over Telegram discussions that were intercepted? That is significantly more difficult to evaluate.</p>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Further investigation of some of the cases:IRI hacking into accounts,not censorship.Tnx <a href="https://twitter.com/telegram">@telegram</a> 4 being responsive&#10;<a href="https://t.co/QGk7picBcF">https://t.co/QGk7picBcF</a></p>&mdash; Reza Ghazinouri (@ghazinouri) <a href="https://twitter.com/ghazinouri/status/687399529918894080">January 13, 2016</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Despite good intentions, it’s becoming clearer that a good number of activists who trusted the application that branded itself as the “safest” messaging app are getting their account hacked and channels deleted.</p>
+
+<p>Countries like Iran tend to be blocking applications that blinds their intelligence as they get popular. Repeated claims by the authorities that they wouldn’t block Telegram should already have sounded suspicious. <strong>If a single SMS enables you to get access to a user’s account and data, you designed your system with a backdoor that any serious adversary can exploit.</strong></p>
+
+<h2 id="does-this-affect-only-telegram">Does this affect only Telegram?</h2>
+
+<p>No, other services where you only need to send an SMS to log in are affected by this. But unlike Telegram, a lot of other messaging applications don’t store your messages and content server-side.</p>
+
+<p>This is a reminder for all users of messaging apps in risky environment, <strong>verify fingerprints</strong>.</p>
+
+<p>SMS activation in most messaging apps can be compared to your server sign in for Jabber when using OTR. It is just your login to the message server, unless you verify fingerprints, you are still at risk of interception.</p>
+
+<h2 id="mitigations">Mitigations:</h2>
+
+<ul>
+  <li><a href="https://telegram.org/blog/sessions-and-2-step-verification">Enable 2-Step authentication (and verify active sessions while you’re at it)</a> and only use “secret chats”.</li>
+  <li>Or just move to an application that won’t store plaintext messages on their servers if you’re operating in such a risky environment.</li>
+</ul>
+
+<h2 id="note-on-two-factor-authentication">Note on two-factor authentication</h2>
+
+<p>Because of the weaknesses of the SMS protocol, it’s generally safer to setup two-factor authentication with a YubiKey or TOTP (such as Google Authenticator). Unfortunately, many services don’t let you opt-out of SMS fallback for second factor authentication.</p>
+
+<p>Disclosure: I have previously worked on encrypted messaging software.</p>
+
+  </div>
+
+  <div class="social-sharing">
+    <a href="https://twitter.com/intent/tweet?text=On SMS logins: an example from Telegram in Iran&url=https://www.fredericjacobs.com/blog/2016/01/14/sms-login/&via=FredericJacobs&related=FredericJacobs" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Tweet</a>
+		<a href="https://facebook.com/sharer.php?u=https://www.fredericjacobs.com/blog/2016/01/14/sms-login/" rel="nofollow" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+		<a href="https://news.ycombinator.com/submitlink?u=https://www.fredericjacobs.com/blog/2016/01/14/sms-login/&t=On SMS logins: an example from Telegram in Iran" rel="nofollow" title="Share on Hacker News" target="_blank" class="btn btn-hn"><i class="fa fa-hacker-news"></i> Hacker News</a>
+    <a href="https://www.fredericjacobs.com/blog/feed.xml" title="Subscribe to RSS"> RSS</a>
+  </div>
+
+</article>
+
+    </div>
+  </body>
+</html>
