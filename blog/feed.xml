@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Jan 2016 15:12:12 +0100</pubDate>
-    <lastBuildDate>Thu, 14 Jan 2016 15:12:12 +0100</lastBuildDate>
+    <pubDate>Thu, 14 Jan 2016 16:29:36 +0100</pubDate>
+    <lastBuildDate>Thu, 14 Jan 2016 16:29:36 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -79,6 +79,15 @@
 &lt;p&gt;Because of the weaknesses of the SMS protocol, it’s generally safer to setup two-factor authentication with a YubiKey or TOTP (such as Google Authenticator). Unfortunately, many services don’t let you opt-out of SMS fallback for second factor authentication.&lt;/p&gt;
 
 &lt;p&gt;Disclosure: I have previously worked on encrypted messaging software.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Update I:&lt;/strong&gt; Telegram clarified that one of the mentioned channels was deleted because of inactivity.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/CDA&quot;&gt;@CDA&lt;/a&gt; &lt;a href=&quot;https://twitter.com/Ammir&quot;&gt;@Ammir&lt;/a&gt; &lt;a href=&quot;https://twitter.com/KevinMiston&quot;&gt;@KevinMiston&lt;/a&gt; This channel got deleted because it was created by an inactive account that was set to self-destruct by its owner.&lt;/p&gt;&amp;mdash; Pavel Durov (@durov) &lt;a href=&quot;https://twitter.com/durov/status/687632744252354561&quot;&gt;January 14, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;It is also important to note that some other accounts could also have been compromised by malware since some samples are looking for activation SMSes.&lt;/p&gt;
 </description>
         <pubDate>Thu, 14 Jan 2016 14:00:00 +0100</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/01/14/sms-login/</link>
