@@ -5,9 +5,104 @@
     <description></description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Jan 2016 16:29:36 +0100</pubDate>
-    <lastBuildDate>Thu, 14 Jan 2016 16:29:36 +0100</lastBuildDate>
+    <pubDate>Wed, 27 Jan 2016 21:40:04 +0100</pubDate>
+    <lastBuildDate>Wed, 27 Jan 2016 21:40:04 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Revisiting the NSA Suite B Announcement</title>
+        <description>&lt;p&gt;In August 2015 the NSA &lt;a href=&quot;https://www.nsa.gov/ia/programs/suiteb_cryptography/index.shtml&quot;&gt;released a major policy statement&lt;/a&gt; on the need for post-quantum cryptography, updating its Suite B recommendations in the process.&lt;/p&gt;
+
+&lt;p&gt;The announcement surprised most of the crypto community with inconsistencies in the recommendations and interrogations about whether or not the threat posed by quantum computers was overblown.&lt;/p&gt;
+
+&lt;p&gt;In their &lt;a href=&quot;https://eprint.iacr.org/2015/1018&quot;&gt;“A Riddle Wrapped in an Enigma”&lt;/a&gt; paper, N. Koblitz &amp;amp; Alfred Menezes speculated about NSA freaking out about the adoption of ECC. Matthew Green &lt;a href=&quot;http://blog.cryptographyengineering.com/2015/10/a-riddle-wrapped-in-curve.html&quot;&gt;also critically blogged about the paper.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Earlier this month, the IAD quietly &lt;a href=&quot;https://www.iad.gov/iad/library/ia-guidance/ia-solutions-for-classified/algorithm-guidance/cnsa-suite-and-quantum-computing-faq.cfm&quot;&gt;posted a FAQ&lt;/a&gt; document providing some more details about the changes in the recommendations. Here are some highlights.&lt;/p&gt;
+
+&lt;h2 id=&quot;compliance&quot;&gt;Compliance&lt;/h2&gt;
+
+&lt;p&gt;In the &lt;a href=&quot;https://www.fredericjacobs.com/blog/2015/12/18/COMSEC/&quot;&gt;NSA COMSEC Guide&lt;/a&gt; it was revealed that NSA was highly interested in collaborating with the industry so that industry could provide more “integrated” encryption solutions and NSA wouldn’t have to layer crypto on top of commercial products. Therefore, the FAQ document is mostly targeted for these “NSS” (national security systems) vendors.&lt;/p&gt;
+
+&lt;h2 id=&quot;timing&quot;&gt;Timing&lt;/h2&gt;
+
+&lt;p&gt;The FAQ claims that the timing of the Suite B updates was an opportune moment to make the announcement about Quantum resistance but no particular breakthrough motivated the update of the recommendations.&lt;/p&gt;
+
+&lt;h2 id=&quot;primitives&quot;&gt;Primitives&lt;/h2&gt;
+
+&lt;p&gt;The current Suite B recommendations are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RSA 3072-bit or larger&lt;/li&gt;
+  &lt;li&gt;DH 3072-bit or larger&lt;/li&gt;
+  &lt;li&gt;ECDH and ECDSA with NIST P-384&lt;/li&gt;
+  &lt;li&gt;SHA-384&lt;/li&gt;
+  &lt;li&gt;AES-256&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;with the note:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NSA prefers the use of ECDH with P-384 and 3072-bit DH for key establishment.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And the document explicitly says the following primitives should no longer be used for NSS:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ECDH and ECDSA with NIST P-256&lt;/li&gt;
+  &lt;li&gt;SHA-256&lt;/li&gt;
+  &lt;li&gt;AES-128&lt;/li&gt;
+  &lt;li&gt;RSA with 2048-bit keys&lt;/li&gt;
+  &lt;li&gt;DH with 2048-bit keys&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;threat-of-quantum-computing&quot;&gt;Threat of Quantum Computing&lt;/h2&gt;
+
+&lt;p&gt;The document says that it takes up to 20 years for algorithms to be fully deployed on NSS, and the equipment is often used for 30 years or more. NSA refers to “many experts” that predict a quantum computer capable of effectively breaking public key crypto within that timeframe and that it is important to address that concern.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Choosing the right time to champion the development of quantum resistant standards is based on 3 points: forecasts on the future development of a large quantum computer, maturity of quantum resistant algorithms, and an analysis of costs and benefits to NSS owners and stakeholders. NSA believes the time is now right—consistent advances in quantum computing are being made, there are many more proposals for potentially useful quantum resistant algorithms than were available 5 years ago, and the mandatory change to elliptic curves that would have been required in October 2015 presented an opportune time to make an announcement. NSA published the advisory memorandum to move to quantum resistant symmetric key options and to allow additional continued use of older public key options as a way to reduce modernization costs in the near term. In the longer term, NSA is looking to all NSS vendors and operators to implement standards-based, quantum resistant cryptography to protect their data and communications.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;nsa-on-nist&quot;&gt;NSA on NIST&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NSA will continue to support NIST in the standardization process and will also encourage work in the vendor and larger standards communities to help produce standards with broad support for deployment in NSS. NSA believes that NIST can lead a robust and transparent process for the standardization of publicly developed and vetted algorithms, and we encourage this process to begin soon. NSA believes that the external cryptographic community can develop quantum resistant algorithms and reach broad agreement for standardization within a few years.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;does-the-fact-nsa-is-making-this-change-today-mean-a-quantum-computer-exists&quot;&gt;Does the fact NSA is making this change today mean a quantum computer exists?&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NSA does not know if or when a quantum computer of sufficient size to exploit public key cryptography will exist. The cryptographic systems that NSA produces, certifies, and supports often have very long life-cycles. NSA has to produce requirements today for systems that will be used for many decades in the future, and data protected by these systems will still require cryptographic protection for decades after these solutions are replaced. There is growing research in the area of quantum computing, and enough progress is being made that NSA must act now to protect NSS by encouraging the development and adoption of quantum resistant algorithms.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;qkd&quot;&gt;QKD&lt;/h2&gt;
+
+&lt;p&gt;NSA briefly mentions QKD as a possible solution. I haven’t seen any QKD scheme myself that has the desired no-MITM property that it claims it has. Most schemes make the unreasonable assumption that there exists a public classic channel between Alice and Bob and that Eve would only mess with the qubits. This assumes that the classical channel is already authenticated so it doesn’t really solve the post-quantum crypto problem since they already have a secure communication channel (symmetric crypto is not believed to be vulnerable to QC if key sizes make a Grover search unfeasible).&lt;/p&gt;
+
+&lt;p&gt;NSA says they have no plans to use quantum cryptography, it wouldn’t be realistic to do so.&lt;/p&gt;
+
+&lt;h2 id=&quot;on-the-rsadh-recommendation&quot;&gt;On the RSA/DH recommendation&lt;/h2&gt;
+
+&lt;p&gt;NSA wants to keep supporting these “legacy” algorithms because of cost effectiveness, suggesting that asking those vendors to move to ECC, only to move to a post-quantum algorithm in a few years would be a waste of effort.&lt;/p&gt;
+
+&lt;p&gt;NSA makes it clear that they still encourage vendors to move to ECC, but if the vendors can’t comply to the new advisory within a limited timeframe, they can just transition to the quantum resistant cryptography, whenever that comes.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;The document brings light to some of the questions the crypto community had been wondering about since the announcement. Not all recommendations are equal. Nuancing that some algorithms (DH &amp;amp; RSA) are now being transitioned towards “legacy” status but are still in the recommendation for giving vendors more time to transition is an important clarification.&lt;/p&gt;
+
+&lt;p&gt;I believe ECC isn’t going away anytime soon, especially for systems at scale. Some HTTPS reverse-proxies serve millions of users and the move to quantum resistant crypto would make that impractical due to increased key sizes. Therefore, suggesting that vendors can just bump RSA key size waiting for a post-quantum standard sounds unwise.&lt;/p&gt;
+
+&lt;p&gt;It’s exciting to see more people looking at NTRU or McEliece and working on better implementations that the naive academic ones but there is still a long way to go.&lt;/p&gt;
+
+&lt;p&gt;Probably see you on a NIST, CFRG or PQCrypto mailing list to discuss this further!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Jan 2016 21:00:00 +0100</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2016/01/27/NSA-QC/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/01/27/NSA-QC/</guid>
+        
+        
+      </item>
     
       <item>
         <title>On SMS logins: an example from Telegram in Iran</title>
