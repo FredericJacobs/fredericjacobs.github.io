@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 27 Jan 2016 21:40:04 +0100</pubDate>
-    <lastBuildDate>Wed, 27 Jan 2016 21:40:04 +0100</lastBuildDate>
+    <pubDate>Wed, 27 Jan 2016 21:45:18 +0100</pubDate>
+    <lastBuildDate>Wed, 27 Jan 2016 21:45:18 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -93,7 +93,7 @@
 
 &lt;p&gt;I believe ECC isn’t going away anytime soon, especially for systems at scale. Some HTTPS reverse-proxies serve millions of users and the move to quantum resistant crypto would make that impractical due to increased key sizes. Therefore, suggesting that vendors can just bump RSA key size waiting for a post-quantum standard sounds unwise.&lt;/p&gt;
 
-&lt;p&gt;It’s exciting to see more people looking at NTRU or McEliece and working on better implementations that the naive academic ones but there is still a long way to go.&lt;/p&gt;
+&lt;p&gt;It’s exciting to see more people looking at NTRU or McEliece and working on better implementations that the naive academic ones but there is still a long way to go before large scale deployments.&lt;/p&gt;
 
 &lt;p&gt;Probably see you on a NIST, CFRG or PQCrypto mailing list to discuss this further!&lt;/p&gt;
 </description>
