@@ -5,9 +5,51 @@
     <description>Frederic Jacobs&#39; Personal Blog</description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 31 Jan 2016 20:05:53 +0100</pubDate>
-    <lastBuildDate>Sun, 31 Jan 2016 20:05:53 +0100</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <pubDate>Wed, 03 Feb 2016 00:35:50 +0100</pubDate>
+    <lastBuildDate>Wed, 03 Feb 2016 00:35:50 +0100</lastBuildDate>
+    <generator>Jekyll v3.1.1</generator>
+    
+      <item>
+        <title>Bumping into Stallman, again</title>
+        <description>&lt;p&gt;This is the second time I’m talking at the same conference as Richard Stallman, after the &lt;a href=&quot;https://ind.ie/archive/summit/&quot;&gt;Ind.ie Tech Summit&lt;/a&gt; in Brighton, this time was at the &lt;a href=&quot;https://fri-software-days.ch/index.php?lang=en&quot;&gt;Fri Software Days&lt;/a&gt; in Fribourg, Switzerland.&lt;/p&gt;
+
+&lt;p&gt;One day before my presentation, I got an email from the organizers, letting me know that Stallman would like me to rename the title of my talk to remove any mentions of “Open Source Software” and replace them with “Free Software”.&lt;/p&gt;
+
+&lt;p&gt;The email read like this:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Is it feasible to remove the terms “Open-Source” from the title of your presentation and replace them by “Free-libre software”? It’s the wish of M. Stallman, that will probably attend your talk.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Apparently, Stallman has been doing this for some time now, &lt;a href=&quot;http://pastebin.com/ADSHJrHm&quot;&gt;as this email from 2011 shows&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;So please make sure that all the publicity about the event (web site, email announcements, conference programs, direct mail, signs, etc), uses the term “free software”, not “open source”, when you refer to work that includes mine.  This includes to the title and descriptions of my speech, of the session it is in, of the track it is part of, and of the event itself.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I told the organizers, that I would stand by my use of OSS because that’s what was the right term to use in the context of my presentation on “(Open Source) Software Supply Chain Security”. My talk was about any kind of software that has accessible source code and referring to “Free Software” would have been restrictive of what I really wanted to talk about. Just to make it clear, despite Stallman’s wishes, no modifications to my title or abstract were made.&lt;/p&gt;
+
+&lt;p&gt;Freedom starts with being able to choose the words I use to describe my own talk, if you ask me.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/img/Stallman.JPG&quot; alt=&quot;Stallman evangelizes Fri Software Days about Free Software&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Stallman narrative of blaming the users for choosing to use “what just works” and looks great over “Free Software” is counter-productive. Until you build beautiful and viable alternatives, you can’t keep on blaming the users. And standing in denial isn’t helping. In his call for action, he encouraged programmers and activists to join the movement but he systematically leaves out the people the “Free Software” community desperately needs the most, UX and UI designers.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;During the Q&amp;amp;A, someone from the audience asked how someone could live from writing “Free software”. Stallman referred to himself as the perfect example that it was possible.    He finished answering that question with the following widely inappropriate comment:&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&amp;quot;Ian Murdoch did kill himself, but he was more of an open source supporter. Free software didn&amp;#39;t kill anyone.&amp;quot; ~Stallman going too far ...&lt;/p&gt;&amp;mdash; Frederic Jacobs (@FredericJacobs) &lt;a href=&quot;https://twitter.com/FredericJacobs/status/694235802100961281&quot;&gt;February 1, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Stallman is going too far, his religious war of “Free Software” against the evil “Open Source” is out-of-sync with reality, and has become quite embarrassing to have to use GPL licenses and defend a different vision of the Free Software movement.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 02 Feb 2016 23:25:00 +0100</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2016/02/02/stallmanism/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/02/02/stallmanism/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Revisiting the NSA Suite B Announcement</title>
