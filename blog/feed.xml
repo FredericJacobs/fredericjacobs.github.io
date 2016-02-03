@@ -5,8 +5,8 @@
     <description>Frederic Jacobs&#39; Personal Blog</description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 03 Feb 2016 00:49:19 +0100</pubDate>
-    <lastBuildDate>Wed, 03 Feb 2016 00:49:19 +0100</lastBuildDate>
+    <pubDate>Wed, 03 Feb 2016 17:06:57 +0100</pubDate>
+    <lastBuildDate>Wed, 03 Feb 2016 17:06:57 +0100</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
     
       <item>
@@ -43,6 +43,13 @@
 &lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
 
 &lt;p&gt;Stallman is going too far, his religious war of “Free Software” against the evil “Open Source” is out-of-sync with reality, and has become quite embarrassing for anyone using GPL licenses and defend a different vision of the Free Software movement.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Update 1&lt;/strong&gt; (2015-02-03 15:00 GMT): Adding slides of the talk on OSS Supply Chain Security&lt;/p&gt;
+
+&lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;25823f7b79014e63955509834f1a4c80&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
+
 </description>
         <pubDate>Tue, 02 Feb 2016 23:25:00 +0100</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/02/02/stallmanism/</link>
