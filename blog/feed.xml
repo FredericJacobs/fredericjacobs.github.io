@@ -5,13 +5,13 @@
     <description>Frederic Jacobs&#39; Personal Blog</description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Apr 2016 17:13:23 +0200</pubDate>
-    <lastBuildDate>Thu, 07 Apr 2016 17:13:23 +0200</lastBuildDate>
+    <pubDate>Thu, 07 Apr 2016 18:06:32 +0200</pubDate>
+    <lastBuildDate>Thu, 07 Apr 2016 18:06:32 +0200</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
-        <title>Axolotl &amp; the Quantum Computers</title>
-        <description>&lt;p&gt;&lt;em&gt;The Axolotl ratchet &lt;a href=&quot;https://whispersystems.org/blog/signal-inside-and-out/&quot;&gt;was renamed&lt;/a&gt; “Double Ratchet”.&lt;/em&gt;&lt;/p&gt;
+        <title>Double Ratchet &amp; the Quantum Computers</title>
+        <description>&lt;p&gt;&lt;em&gt;The Double Ratchet &lt;a href=&quot;https://whispersystems.org/blog/signal-inside-and-out/&quot;&gt;was previously known&lt;/a&gt; as the Axolotl ratchet.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;With recent developments in quantum information processing and computation, there has been a lot of chatter about moving to post-quantum cryptography. The &lt;a href=&quot;/blog/2016/01/27/NSA-QC/&quot;&gt;NSA&lt;/a&gt; and NIST have already called for the standardization of post-quantum crypto and its swift adoption.&lt;/p&gt;
 
@@ -57,11 +57,11 @@
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;Some mobile messaging apps are experimenting with post-quantum primitives such as &lt;a href=&quot;https://post-quantum.com/pqchat&quot;&gt;PQChat&lt;/a&gt; that is using McEliece for message encryption. While McEliece is a nice primitive, the PQChat message encryption protocol has not been independently studied and documented. End-to-end encryption protocols such as OTR or Axolotl use ephemeral keys extensively to provide strong perfect forward secrecy. 8Mb public keys are making it hard to engineer any kind of protocol with similar forward secrecy features that would work well on mobile, knowing that Axolotl sends a new ephemeral DH key with every message.&lt;/p&gt;
+&lt;p&gt;Some mobile messaging apps are experimenting with post-quantum primitives such as &lt;a href=&quot;https://post-quantum.com/pqchat&quot;&gt;PQChat&lt;/a&gt; that is using McEliece for message encryption. While McEliece is a nice primitive, the PQChat message encryption protocol has not been independently studied and documented. End-to-end encryption protocols such as OTR or the double ratchet use ephemeral keys extensively to provide strong perfect forward secrecy. 8Mb public keys are making it hard to engineer any kind of protocol with similar forward secrecy features that would work well on mobile, knowing that the double ratchet sends a new ephemeral DH key with every message.&lt;/p&gt;
 
-&lt;p&gt;This led me to think about what protection Axolotl actually provides against an adversary who can use a quantum computer to break Axolotl’s DH primitive.&lt;/p&gt;
+&lt;p&gt;This led me to think about what protection the double ratchet actually provides against an adversary who can use a quantum computer to break the ratchet’s DH primitive.&lt;/p&gt;
 
-&lt;p&gt;If you’re not familiar with Axolotl, the Open Whisper Systems blog has &lt;a href=&quot;https://whispersystems.org/blog/advanced-ratcheting/&quot;&gt;a very good post &lt;/a&gt; about it. Axolotl combines two kinds of ratchets (hence why it was recently renamed &lt;em&gt;“Double Ratchet”&lt;/em&gt;), namely a Diffie-Hellman ratchet and a hash-iterated one.&lt;/p&gt;
+&lt;p&gt;If you’re not familiar with the double ratchet, the Open Whisper Systems blog has &lt;a href=&quot;https://whispersystems.org/blog/advanced-ratcheting/&quot;&gt;a very good post&lt;/a&gt; about it. As its name suggests, it combines two kinds of ratchets, namely a Diffie-Hellman ratchet and a hash-iterated one.&lt;/p&gt;
 
 &lt;p&gt;The ratchet is initialized with a &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; that is derived from a key exchange, in the case of Signal or WhatsApp, that is the &lt;a href=&quot;https://whispersystems.org/blog/simplifying-otr-deniability/&quot;&gt;3DH key exchange&lt;/a&gt;.&lt;/p&gt;
 
@@ -86,7 +86,7 @@ MK-2 ----+      |       |
 
 &lt;p&gt;An important fact is that each new &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; is derived through a PRF from a previous &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; and the output of DH key agreement. The fact that it is derived, not only from a DH agreement, but also from a previous value is a valuable mitigation when we think about the threat posed by quantum computers. If the PRF used for the derivation is secure, then even if the adversary can break the ephemeral DH part, he won’t be able to recover the new &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; without the previous one.&lt;/p&gt;
 
-&lt;p&gt;A consequence of that design, is that an adversary has to &lt;strong&gt;record every single message since the session initialization or he loses his capability to decrypt any subsequent messages&lt;/strong&gt; for future messages, even if he can continue to break the ephemeral DH. If the adversary didn’t intercept the initialization of the Axolotl session, would not be able to decrypt any subsequent messages.&lt;/p&gt;
+&lt;p&gt;A consequence of that design, is that an adversary has to &lt;strong&gt;record every single message since the session initialization or he loses his capability to decrypt any subsequent messages&lt;/strong&gt; for future messages, even if he can continue to break the ephemeral DH. If the adversary didn’t intercept the 3DH key agreement, he would not be able to decrypt any subsequent messages.&lt;/p&gt;
 
 &lt;p&gt;That’s a really cool property of the protocol. ZRTP has similar property if &lt;a href=&quot;http://zfoneproject.com/faq.html#keycontinuity&quot;&gt;key continuity&lt;/a&gt; is implemented (not the case in Signal) but most other protocols (MTProto, SSH, Threema …) do not have that feature.&lt;/p&gt;
 

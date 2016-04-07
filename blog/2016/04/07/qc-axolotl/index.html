@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Axolotl & the Quantum Computers</title>
-  <meta name="description" content="The Axolotl ratchet was renamed “Double Ratchet”.">
+  <title>Double Ratchet & the Quantum Computers</title>
+  <meta name="description" content="The Double Ratchet was previously known as the Axolotl ratchet.">
 
   <link rel="stylesheet" href="/blog/css/main.css">
   <link rel="canonical" href="https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/">
@@ -59,12 +59,12 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Axolotl & the Quantum Computers</h1>
+    <h1 class="post-title" itemprop="name headline">Double Ratchet & the Quantum Computers</h1>
     <p class="post-meta"><time datetime="2016-04-07T15:00:00+02:00" itemprop="datePublished">Apr 7, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p><em>The Axolotl ratchet <a href="https://whispersystems.org/blog/signal-inside-and-out/">was renamed</a> “Double Ratchet”.</em></p>
+    <p><em>The Double Ratchet <a href="https://whispersystems.org/blog/signal-inside-and-out/">was previously known</a> as the Axolotl ratchet.</em></p>
 
 <p>With recent developments in quantum information processing and computation, there has been a lot of chatter about moving to post-quantum cryptography. The <a href="/blog/2016/01/27/NSA-QC/">NSA</a> and NIST have already called for the standardization of post-quantum crypto and its swift adoption.</p>
 
@@ -110,11 +110,11 @@
 
 <p><br /></p>
 
-<p>Some mobile messaging apps are experimenting with post-quantum primitives such as <a href="https://post-quantum.com/pqchat">PQChat</a> that is using McEliece for message encryption. While McEliece is a nice primitive, the PQChat message encryption protocol has not been independently studied and documented. End-to-end encryption protocols such as OTR or Axolotl use ephemeral keys extensively to provide strong perfect forward secrecy. 8Mb public keys are making it hard to engineer any kind of protocol with similar forward secrecy features that would work well on mobile, knowing that Axolotl sends a new ephemeral DH key with every message.</p>
+<p>Some mobile messaging apps are experimenting with post-quantum primitives such as <a href="https://post-quantum.com/pqchat">PQChat</a> that is using McEliece for message encryption. While McEliece is a nice primitive, the PQChat message encryption protocol has not been independently studied and documented. End-to-end encryption protocols such as OTR or the double ratchet use ephemeral keys extensively to provide strong perfect forward secrecy. 8Mb public keys are making it hard to engineer any kind of protocol with similar forward secrecy features that would work well on mobile, knowing that the double ratchet sends a new ephemeral DH key with every message.</p>
 
-<p>This led me to think about what protection Axolotl actually provides against an adversary who can use a quantum computer to break Axolotl’s DH primitive.</p>
+<p>This led me to think about what protection the double ratchet actually provides against an adversary who can use a quantum computer to break the ratchet’s DH primitive.</p>
 
-<p>If you’re not familiar with Axolotl, the Open Whisper Systems blog has <a href="https://whispersystems.org/blog/advanced-ratcheting/">a very good post </a> about it. Axolotl combines two kinds of ratchets (hence why it was recently renamed <em>“Double Ratchet”</em>), namely a Diffie-Hellman ratchet and a hash-iterated one.</p>
+<p>If you’re not familiar with the double ratchet, the Open Whisper Systems blog has <a href="https://whispersystems.org/blog/advanced-ratcheting/">a very good post</a> about it. As its name suggests, it combines two kinds of ratchets, namely a Diffie-Hellman ratchet and a hash-iterated one.</p>
 
 <p>The ratchet is initialized with a <code class="highlighter-rouge">RootKey</code> that is derived from a key exchange, in the case of Signal or WhatsApp, that is the <a href="https://whispersystems.org/blog/simplifying-otr-deniability/">3DH key exchange</a>.</p>
 
@@ -139,7 +139,7 @@ MK-2 ----+      |       |
 
 <p>An important fact is that each new <code class="highlighter-rouge">RootKey</code> is derived through a PRF from a previous <code class="highlighter-rouge">RootKey</code> and the output of DH key agreement. The fact that it is derived, not only from a DH agreement, but also from a previous value is a valuable mitigation when we think about the threat posed by quantum computers. If the PRF used for the derivation is secure, then even if the adversary can break the ephemeral DH part, he won’t be able to recover the new <code class="highlighter-rouge">RootKey</code> without the previous one.</p>
 
-<p>A consequence of that design, is that an adversary has to <strong>record every single message since the session initialization or he loses his capability to decrypt any subsequent messages</strong> for future messages, even if he can continue to break the ephemeral DH. If the adversary didn’t intercept the initialization of the Axolotl session, would not be able to decrypt any subsequent messages.</p>
+<p>A consequence of that design, is that an adversary has to <strong>record every single message since the session initialization or he loses his capability to decrypt any subsequent messages</strong> for future messages, even if he can continue to break the ephemeral DH. If the adversary didn’t intercept the 3DH key agreement, he would not be able to decrypt any subsequent messages.</p>
 
 <p>That’s a really cool property of the protocol. ZRTP has similar property if <a href="http://zfoneproject.com/faq.html#keycontinuity">key continuity</a> is implemented (not the case in Signal) but most other protocols (MTProto, SSH, Threema …) do not have that feature.</p>
 
@@ -149,10 +149,10 @@ MK-2 ----+      |       |
 
   <div class="social-sharing">
     <a href="https://twitter.com/intent/follow?screen_name=FredericJacobs" title="Follow on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Follow me </a>|
-    <a href="https://twitter.com/intent/tweet?text=Axolotl & the Quantum Computers&url=https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/&via=FredericJacobs&related=FredericJacobs" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Tweet article </a>|
+    <a href="https://twitter.com/intent/tweet?text=Double Ratchet & the Quantum Computers&url=https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/&via=FredericJacobs&related=FredericJacobs" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Tweet article </a>|
 		<a href="https://facebook.com/sharer.php?u=https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/" rel="nofollow" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook </a>|
 	  <a href="https://www.fredericjacobs.com/blog/feed.xml" title="Subscribe to RSS"> RSS </a>|
-    <a href="https://news.ycombinator.com/submitlink?u=https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/&t=Axolotl & the Quantum Computers" rel="nofollow" title="Share on Hacker News" class="hn-share-button" target="_blank"> Hacker News </a>
+    <a href="https://news.ycombinator.com/submitlink?u=https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/&t=Double Ratchet & the Quantum Computers" rel="nofollow" title="Share on Hacker News" class="hn-share-button" target="_blank"> Hacker News </a>
   </div>
   <script src="/blog/JS/hn.js" async defer></script>
 
