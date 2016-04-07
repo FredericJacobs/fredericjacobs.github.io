@@ -5,9 +5,99 @@
     <description>Frederic Jacobs&#39; Personal Blog</description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 17 Mar 2016 11:36:26 +0100</pubDate>
-    <lastBuildDate>Thu, 17 Mar 2016 11:36:26 +0100</lastBuildDate>
+    <pubDate>Thu, 07 Apr 2016 15:40:43 +0200</pubDate>
+    <lastBuildDate>Thu, 07 Apr 2016 15:40:43 +0200</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Axolotl &amp; the Quantum Computers</title>
+        <description>&lt;p&gt;&lt;em&gt;The Axolotl protocol &lt;a href=&quot;https://whispersystems.org/blog/signal-inside-and-out/&quot;&gt;was renamed&lt;/a&gt; “Double Ratchet”.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;With recent developments in quantum information processing and computation, there has been a lot of chatter about moving to post-quantum cryptography. The &lt;a href=&quot;/blog/2016/01/27/NSA-QC/&quot;&gt;NSA&lt;/a&gt; and NIST have already called for the standardization of post-quantum crypto and its swift adoption.&lt;/p&gt;
+
+&lt;p&gt;Replacing some primitives is easier than others. Doubling symmetric key sizes suffices to counter the key space search speedup provided by Grover search which requires work proportional to the square root of the size of the key space.&lt;/p&gt;
+
+&lt;p&gt;Replacing public-key systems appears to be a more challenging, requiring to move to new primitives who derive their hardness from entirely different problems. Most of those problems have been around for some time and the hardness from the general problem is reasonably well understood. But when it comes to &lt;a href=&quot;http://eprint.iacr.org/2016/351&quot;&gt;instantiating specific instances&lt;/a&gt; and working on side-channel resistant implementations, we’re still in infancy.&lt;/p&gt;
+
+&lt;p&gt;Other factors such as significantly longer &lt;a href=&quot;https://en.wikipedia.org/wiki/Post-quantum_cryptography#Key_size_table&quot;&gt;key sizes&lt;/a&gt; are hindering adoption. Whether a trade-off is acceptable or not depends on the context. Hash-based signatures are a very elegant construction that could already be used when signature sizes are negligible compared to the size of the signed content such as software updates. &lt;a href=&quot;https://twitter.com/agl__&quot;&gt;Adam Langley&lt;/a&gt; wrote a &lt;a href=&quot;https://www.imperialviolet.org/2013/07/18/hashsig.html&quot;&gt;brilliant post explaining how they work&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;table align=&quot;center&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Algorithm&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Public key size (bits)     &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Private key size (bits)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Ring-LWE&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6595&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;NTRU&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6130&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6743&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Hash signature&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;36,000&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;36,000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Goppa-based McEliece&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8,373,911&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;92,027&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Some mobile messaging apps are experimenting with post-quantum primitives such as &lt;a href=&quot;https://post-quantum.com/pqchat&quot;&gt;PQChat&lt;/a&gt; that is using McEliece for message encryption. While McEliece is a nice primitive, the PQChat message encryption protocol has not been independently studied and documented. End-to-end encryption protocols such as OTR or Axolotl use ephemeral keys extensively to provide strong perfect forward secrecy. 8Mb public keys are making it hard to engineer any kind of protocol with similar forward secrecy features that would work well on mobile, knowing that Axolotl sends a new ephemeral DH key with every message.&lt;/p&gt;
+
+&lt;p&gt;This led me to think about what protection Axolotl actually provides against an adversary who can use a quantum computer to break Axolotl’s DH primitive.&lt;/p&gt;
+
+&lt;p&gt;If you’re not familiar with Axolotl, the Open Whisper Systems blog has &lt;a href=&quot;https://whispersystems.org/blog/advanced-ratcheting/&quot;&gt;a very good post &lt;/a&gt; about it. Axolotl combines two kinds of ratchets (hence why it was recently renamed &lt;em&gt;“Double Ratchet”&lt;/em&gt;), namely a Diffie-Hellman ratchet and a hash-iterated one.&lt;/p&gt;
+
+&lt;p&gt;The ratchet is initialized with a &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; that is derived from a key exchange, in the case of Signal or WhatsApp, that is the &lt;a href=&quot;https://whispersystems.org/blog/simplifying-otr-deniability/&quot;&gt;3DH key exchange&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MK      CK      RK      CK      MK
+--      --      --      --      --
+                |
+                |
+      PRF(RK, ECDH(A1,B0))
+               /|
+              / |
+             /  - PRF(RK, ECDH(A1,B1))
+     CK-A1-B0   |\
+         |      | \
+MK-0 ----+      |  \
+         |      |   CK-A1-B1
+MK-1 ----+      |       |
+         |      |       +---- MK-0
+MK-2 ----+      |       |
+                |       +---- MK-1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;An important fact is that each new &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; is derived through a PRF from a previous &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; and the output of DH key agreement. The fact that it is derived, not only from a DH agreement, but also from a previous value is a valuable mitigation when we think about the threat posed by quantum computers. If the PRF used for the derivation is secure, then even if the adversary can break the ephemeral DH part, he won’t be able to recover the new &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; without the previous one.&lt;/p&gt;
+
+&lt;p&gt;A consequence of that design, is that an adversary has to &lt;strong&gt;record every single message since the session initialization or he loses his capability to decrypt any subsequent messages&lt;/strong&gt; for future messages, even if he can continue to break the ephemeral DH. If the adversary didn’t intercept the initialization of the Axolotl session, would not be able to decrypt any subsequent messages.&lt;/p&gt;
+
+&lt;p&gt;That’s a really cool property of the protocol. ZRTP has similar property if &lt;a href=&quot;http://zfoneproject.com/faq.html#keycontinuity&quot;&gt;key continuity&lt;/a&gt; is implemented (not the case in Signal) but most other protocols (MTProto, SSH, Threema …) do not have that feature.&lt;/p&gt;
+
+&lt;p&gt;While I do think it’s important to move to new primitives soon, cryptographic protocols can be used to mitigate the risk of anyone being able to break your public-key primitives by relying on well-proven symmetric key systems. Most people compare products solely on the primitives or key sizes, making abstractions of protocols and implementations, which are the global picture that truly matters.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 07 Apr 2016 00:00:00 +0200</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/</guid>
+        
+        
+      </item>
     
       <item>
         <title>My First TEDx Talk</title>
