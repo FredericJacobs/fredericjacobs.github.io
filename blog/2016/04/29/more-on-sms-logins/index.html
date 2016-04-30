@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>BrainOverfl0w</title>
-  <meta name="description" content="Frederic Jacobs' Personal Blog">
+  <title>On SMS Logins II : an example from Telegram in Russia</title>
+  <meta name="description" content="A few months ago, I wrote a post on SMS logins following a wave of attacks attempting to take over Iranian Telegram accounts. Recently, there have been new c...">
 
   <link rel="stylesheet" href="/blog/css/main.css">
-  <link rel="canonical" href="https://www.fredericjacobs.com/blog/">
+  <link rel="canonical" href="https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/">
   <link rel="alternate" type="application/rss+xml" title="BrainOverfl0w" href="https://www.fredericjacobs.com/blog/feed.xml">
 </head>
 
@@ -56,87 +56,61 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Hi!</h1>
-  <p>This is just Frederic Jacobs' blog, you'll find posts with a varying level of structure. For <b>brainfarts</b>, you can <a href=https://twitter.com/intent/follow?screen_name=FredericJacobs>follow me on Twitter</a>.
-    I like to take <b>pictures</b> both on <a href="https://www.instagram.com/fredericjacobs/"> mobile</a> and <a href="https://500px.com/fredericjacobs">with a DSLR</a>.
-    Sometimes I play with <a href="https://dribbble.com/FredericJacobs"> <b>vectors and pixels</b></a>.
-  </p>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">On SMS Logins II : an example from Telegram in Russia</h1>
+    <p class="post-meta"><time datetime="2016-04-29T21:30:00+02:00" itemprop="datePublished">Apr 29, 2016</time></p>
+  </header>
 
-  <h1 class="page-heading">Posts</h1>
+  <div class="post-content" itemprop="articleBody">
+    <p>A few months ago, I wrote <a href="/blog/2016/01/14/sms-login/">a post on SMS logins</a> following a wave of attacks attempting to take over Iranian Telegram accounts. Recently, there have been new confirmed cases of attacks in both <a href="https://twitter.com/Ammir/status/725754152677195777">Iran</a> and <a href="https://www.facebook.com/kozlovsky/posts/10208948934790884">Russia</a>.</p>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Apr 30, 2016</span>
+<p><a href="https://twitter.com/kozlovsky_en">Oleg Kozlovsky</a> is a leader of the <a href="https://en.wikipedia.org/wiki/Oborona">Oborona</a> civic youth movement in Russia. The movement is known for opposing an authoritarian vector of Russian policy and supporting nonviolent resistance to the authorities. At 2:25AM on April 29th Moscow-time, he [explain how he knew he got disconnected then]. His, carrier <a href="https://en.wikipedia.org/wiki/MTS_(network_provider)">MTS</a>, Russia’s largest mobile operator. After 15 minutes of disconnection, someone tries to log into Oleg’s account using a <a href="https://github.com/vysheng/tg">Telegram command-line interface</a> over <a href="https://atlas.torproject.org/#details/6C143720FFF8469EF6A5C5B4066366340CF6C0D1">the Tor network</a>. The process for authorizing a device to a Telegram accounts simply consists of entering a verification code received by SMS. Oleg doesn’t receive the message, but at 3:08AM the attacker enters the authorization code and gets access to Oleg’s account. Telegram displayed a notification about the newly logged in device, but Oleg was sleeping and only saw it in the morning. [EXPLAIN Cell phone coverage coming back.]</p>
 
-        <h2>
-          <a class="post-link" href="/blog/2016/04/30/more-on-sms-logins/">On SMS Logins II : an example from Telegram in Russia</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 7, 2016</span>
+<p>Four minutes later, the same Tor exit node IP address, logs into <a href="https://twitter.com/alburov?lang=en">George Alburov’s</a> Telegram account.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/2016/04/07/qc-axolotl/">Double Ratchet & the Quantum Computers</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 16, 2016</span>
+<h1 id="section">#</h1>
 
-        <h2>
-          <a class="post-link" href="/blog/2016/03/16/tedx/">My First TEDx Talk</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Feb 2, 2016</span>
+<h1 id="section-1">#</h1>
 
-        <h2>
-          <a class="post-link" href="/blog/2016/02/02/stallmanism/">Bumping into Stallman, again</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 27, 2016</span>
+<p>With Telegram versed in how there was now hacking my account at night and probably George Alburi. It’s an interesting story.
+Events unfolded as follows:
+At 2:25 the night of MTS technical security department disables me delivery service of SMS-messages.
+After 15 minutes, at 2:40, someone with the Unix-console by IP-address 162.247.72.27 (this is one of the Tor anonymizer servers) Telegram sent a request for authorization of a new device with my phone number.
+I sent an SMS with a code that has not been delivered (the service is disabled for me).
+3:08 The attacker enters the authorization code and get access to my account. Telegram sent me an automatic notification about this (which I read in the morning).
+3:12 In the same way from the same IP-address (ie through the same session Tor) cracked account Jora Alburova.
+At 4:55 of technical security department MTS again includes me delivery service SMS.
+The reason for opening and closing the MTS service called I refused, offering to write a letter of inquiry.
+The main question is how the unknown persons had access to the code, which was sent to the SMS, but not delivered. Unfortunately, I have only one version: through SORM system or directly through the MTS tehbezopasnosti department (for example, on a call from the “competent authorities”). If there are other options - offer.
+The main recommendation for all users Telegram: connect the two-stage authorization (ie not only SMS, but also the password). This is done in the security settings.
+The main recommendation for the Telegram: not accept the authorization code, if it is not proof of delivery.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/2016/01/27/NSA-QC/">Revisiting the NSA Suite B Announcement</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 14, 2016</span>
+<p>Based on those facts, it is likely that MTS was coerced by the .</p>
 
-        <h2>
-          <a class="post-link" href="/blog/2016/01/14/sms-login/">On SMS logins: an example from Telegram in Iran</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Dec 18, 2015</span>
+<p>Unsurprisingly, MTS doesn’t publish a transparency report that could help evaluate the scale of those kinds of attacks.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/12/18/COMSEC/">Some bits from the NSA COMSEC Guide</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Nov 22, 2015</span>
+<p>https://twitter.com/alburov/status/725939782191206402?lang=en
+https://www.facebook.com/kozlovsky/posts/10208948934790884?pnref=story</p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/11/22/new-home/">New Home</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p>In the Russian case, it appears that the
+- SS7 vulnerabilties
+- Coercing telecoms
+- IMSI catchers</p>
 
-  <p class="rss-subscribe">subscribe <a href="/blog/feed.xml">via RSS</a></p>
+  </div>
 
-</div>
+  <div class="social-sharing">
+    <a href="https://twitter.com/intent/follow?screen_name=FredericJacobs" title="Follow on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Follow me </a>|
+    <a href="https://twitter.com/intent/tweet?text=On SMS Logins II : an example from Telegram in Russia&url=https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/&via=FredericJacobs&related=FredericJacobs" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Tweet article </a>|
+		<a href="https://facebook.com/sharer.php?u=https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/" rel="nofollow" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook </a>|
+	  <a href="https://www.fredericjacobs.com/blog/feed.xml" title="Subscribe to RSS"> RSS </a>|
+    <a href="https://news.ycombinator.com/submitlink?u=https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/&t=On SMS Logins II : an example from Telegram in Russia" rel="nofollow" title="Share on Hacker News" class="hn-share-button" target="_blank"> Hacker News </a>
+  </div>
+  <script src="/blog/JS/hn.js" async defer></script>
+
+</article>
 
       </div>
     </div>
