@@ -2,12 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BrainOverfl0w</title>
-    <description>Frederic Jacobs&#39; Personal Blog</description>
+    <description>Frederic Jacobs' Personal Blog</description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 24 Jun 2016 21:31:25 +0200</pubDate>
-    <lastBuildDate>Fri, 24 Jun 2016 21:31:25 +0200</lastBuildDate>
-    <generator>Jekyll v3.1.6</generator>
+    <pubDate>Wed, 17 Aug 2016 23:08:54 -0700</pubDate>
+    <lastBuildDate>Wed, 17 Aug 2016 23:08:54 -0700</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>check.torproject.org &amp; IPv6</title>
+        <description>&lt;p&gt;&lt;em&gt;TLDR&lt;/em&gt;: Exit nodes with IPv6 addresses connect to check.torproject.org over IPv6, causing the IP not to be recognised as being one of an exit node. This triggers a scary “Sorry. You are not using Tor.” warning.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;When firing up &lt;a href=&quot;https://www.torproject.org/projects/torbrowser.html.en&quot;&gt;Tor Browser&lt;/a&gt; today and checking if the browser was properly using Tor, I got the following scary message.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/img/tor/ipv6TorCheck.png&quot; alt=&quot;Scary IPv6 Tor Check&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;what-i-assume-happened&quot;&gt;What I assume happened&lt;/h3&gt;
+
+&lt;p&gt;Confused, I quickly checked if that was my IPv6 address. Thankfully it wasn’t. Tor browser was correctly proxying traffic over the Tor network but the exit node resolved &lt;a href=&quot;check.torproject.org&quot;&gt;check.torproject.org&lt;/a&gt; over IPv6. A DNS lookup for &lt;a href=&quot;check.torproject.org&quot;&gt;check.torproject.org&lt;/a&gt; gives:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~ ❯❯❯ host check.torproject.org
+check.torproject.org is an alias for chiwui.torproject.org.
+chiwui.torproject.org has address 138.201.14.212
+chiwui.torproject.org has IPv6 address 2a01:4f8:172:1b46::abba:20:1
+chiwui.torproject.org mail is handled by 10 eugeni.torproject.org.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;What likely happened is that the exit node connected to &lt;a href=&quot;check.torproject.org&quot;&gt;check.torproject.org&lt;/a&gt; over IPv6. Since Tor doesn’t have full support for IPv6 yet, the exit node appeared as unknown, hence triggering this warning.&lt;/p&gt;
+
+&lt;h3 id=&quot;quick-fix&quot;&gt;Quick fix&lt;/h3&gt;
+
+&lt;p&gt;I think the warnings are scary and we shouldn’t be telling users to just ignore them. A quick easy fix would be to simply not have any IPv6 DNS records in &lt;a href=&quot;check.torproject.org&quot;&gt;check.torproject.org&lt;/a&gt; as long as IPv6 isn’t fully supported.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 17 Aug 2016 22:30:00 -0700</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2016/08/17/torcheck-ipv6/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/08/17/torcheck-ipv6/</guid>
+        
+        
+      </item>
     
       <item>
         <title>On SMS Logins II : an example from Telegram in Russia</title>
@@ -21,7 +56,7 @@
 
 &lt;p&gt;At 2:25 AM MSK on Friday April 29th, &lt;a href=&quot;https://en.wikipedia.org/wiki/MTS_(network_provider)&quot;&gt;MTS&lt;/a&gt; (Russia’s largest mobile operator), disables SMS service on his phone number. After 15 minutes of disconnection, someone tries to log into Oleg’s Telegram account. The process for authorizing a new device to a Telegram accounts simply consists of entering a verification code received by SMS when 2-step authentication is not enabled. At 3:08AM the attacker enters the authorization code and gets access to Oleg’s account. The Telegram login notification reveals that the attacker is using a &lt;a href=&quot;https://github.com/vysheng/tg&quot;&gt;Telegram command-line interface&lt;/a&gt; with an IP of a &lt;a href=&quot;https://atlas.torproject.org/#details/6C143720FFF8469EF6A5C5B4066366340CF6C0D1&quot;&gt;Tor exit node&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/img/tghack/telegram-hack-exit-node.png&quot; alt=&quot;The Tor Exit Node used to hack into Oleg&#39;s Telegram account.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/img/tghack/telegram-hack-exit-node.png&quot; alt=&quot;The Tor Exit Node used to hack into Oleg's Telegram account.&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Four minutes later, &lt;a href=&quot;https://twitter.com/alburov/status/725939782191206402?lang=en&quot;&gt;the same Tor exit node IP address&lt;/a&gt;, logs into &lt;a href=&quot;https://twitter.com/alburov?lang=en&quot;&gt;George Alburov’s&lt;/a&gt; Telegram account. It is currently unknown if other accounts were breached that night. Messages logs (excluding Telegram Secret Chats) and contacts information were likely the information seeked by the attacker.&lt;/p&gt;
 
@@ -61,9 +96,9 @@
   &lt;p&gt;Always use end-to-end encryption. As the underlying authentication layer can be spoofed, verify fingerprints for important communications.&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-        <pubDate>Sat, 30 Apr 2016 08:30:00 +0200</pubDate>
-        <link>https://www.fredericjacobs.com/blog/2016/04/30/more-on-sms-logins/</link>
-        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/04/30/more-on-sms-logins/</guid>
+        <pubDate>Fri, 29 Apr 2016 23:30:00 -0700</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins-copy/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins-copy/</guid>
         
         
       </item>
@@ -151,7 +186,7 @@ MK-2 ----+      |       |
 
 &lt;p&gt;While I do think it’s important to move to new primitives soon, cryptographic protocols can be used to mitigate the risk of anyone being able to break your public-key primitives by relying on well-proven symmetric key systems. Most people compare products solely on the primitives or key sizes, making abstractions of protocols and implementations, which are the global picture that truly matters.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 07 Apr 2016 15:00:00 +0200</pubDate>
+        <pubDate>Thu, 07 Apr 2016 06:00:00 -0700</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/</guid>
         
@@ -254,7 +289,7 @@ MK-2 ----+      |       |
 
 &lt;p&gt;&lt;strong&gt;Update (10th June 2016)&lt;/strong&gt; : Added video of the talk.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 16 Mar 2016 23:00:00 +0100</pubDate>
+        <pubDate>Wed, 16 Mar 2016 15:00:00 -0700</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/03/16/tedx/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/03/16/tedx/</guid>
         
@@ -303,7 +338,7 @@ MK-2 ----+      |       |
 &lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;25823f7b79014e63955509834f1a4c80&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
 
 </description>
-        <pubDate>Tue, 02 Feb 2016 23:25:00 +0100</pubDate>
+        <pubDate>Tue, 02 Feb 2016 14:25:00 -0800</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/02/02/stallmanism/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/02/02/stallmanism/</guid>
         
@@ -398,7 +433,7 @@ MK-2 ----+      |       |
 
 &lt;p&gt;Probably see you on a NIST, CFRG or PQCrypto mailing list to discuss this further!&lt;/p&gt;
 </description>
-        <pubDate>Wed, 27 Jan 2016 21:00:00 +0100</pubDate>
+        <pubDate>Wed, 27 Jan 2016 12:00:00 -0800</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/01/27/NSA-QC/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/01/27/NSA-QC/</guid>
         
@@ -489,7 +524,7 @@ MK-2 ----+      |       |
 
 &lt;p&gt;&lt;strong&gt;Update II:&lt;/strong&gt;  I &lt;a href=&quot;/blog/2016/04/30/more-on-sms-logins/&quot;&gt;posted in April 2016 an update&lt;/a&gt; after new cases emerged in Russia and Iran.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 14 Jan 2016 14:00:00 +0100</pubDate>
+        <pubDate>Thu, 14 Jan 2016 05:00:00 -0800</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/01/14/sms-login/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/01/14/sms-login/</guid>
         
@@ -717,7 +752,7 @@ Next, each user would have to keep his primes absolutely secret, forcing on each
 
 &lt;p&gt;There are many more topics covered that I have decided to leave out of this summary. If this sounded interesting, you might want to take a look in the COMSEC guide for yourself!&lt;/p&gt;
 </description>
-        <pubDate>Fri, 18 Dec 2015 18:10:00 +0100</pubDate>
+        <pubDate>Fri, 18 Dec 2015 09:10:00 -0800</pubDate>
         <link>https://www.fredericjacobs.com/blog/2015/12/18/COMSEC/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2015/12/18/COMSEC/</guid>
         
@@ -736,7 +771,7 @@ Next, each user would have to keep his primes absolutely secret, forcing on each
 
 &lt;p&gt;Note: Previous &lt;a href=&quot;https://medium.com/@FredericJacobs&quot;&gt;blog posts&lt;/a&gt; will stay on Medium.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 22 Nov 2015 15:33:00 +0100</pubDate>
+        <pubDate>Sun, 22 Nov 2015 06:33:00 -0800</pubDate>
         <link>https://www.fredericjacobs.com/blog/2015/11/22/new-home/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2015/11/22/new-home/</guid>
         

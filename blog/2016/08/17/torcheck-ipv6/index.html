@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>On SMS Logins II : an example from Telegram in Russia</title>
-  <meta name="description" content="A few months ago, I wrote a post on SMS logins following a wave of attacks attempting to take over Iranian Telegram accounts. Recently, there have been new c...">
+  <title>check.torproject.org & IPv6</title>
+  <meta name="description" content="TLDR: Exit nodes with IPv6 addresses connect to check.torproject.org over IPv6, causing the IP not to be recognised as being one of an exit node. This trigge...">
 
   <link rel="stylesheet" href="/blog/css/main.css">
-  <link rel="canonical" href="https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/">
+  <link rel="canonical" href="https://www.fredericjacobs.com/blog/2016/08/17/torcheck-ipv6/">
   <link rel="alternate" type="application/rss+xml" title="BrainOverfl0w" href="https://www.fredericjacobs.com/blog/feed.xml">
 </head>
 
@@ -59,54 +59,45 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">On SMS Logins II : an example from Telegram in Russia</h1>
-    <p class="post-meta"><time datetime="2016-04-29T21:30:00+02:00" itemprop="datePublished">Apr 29, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">check.torproject.org & IPv6</h1>
+    <p class="post-meta"><time datetime="2016-08-17T22:30:00-07:00" itemprop="datePublished">Aug 17, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>A few months ago, I wrote <a href="/blog/2016/01/14/sms-login/">a post on SMS logins</a> following a wave of attacks attempting to take over Iranian Telegram accounts. Recently, there have been new confirmed cases of attacks in both <a href="https://twitter.com/Ammir/status/725754152677195777">Iran</a> and <a href="https://www.facebook.com/kozlovsky/posts/10208948934790884">Russia</a>.</p>
+    <p><em>TLDR</em>: Exit nodes with IPv6 addresses connect to check.torproject.org over IPv6, causing the IP not to be recognised as being one of an exit node. This triggers a scary “Sorry. You are not using Tor.” warning.</p>
 
-<p><a href="https://twitter.com/kozlovsky_en">Oleg Kozlovsky</a> is a leader of the <a href="https://en.wikipedia.org/wiki/Oborona">Oborona</a> civic youth movement in Russia. The movement is known for opposing an authoritarian vector of Russian policy and supporting nonviolent resistance to the authorities. At 2:25AM on April 29th Moscow-time, he [explain how he knew he got disconnected then]. His, carrier <a href="https://en.wikipedia.org/wiki/MTS_(network_provider)">MTS</a>, Russia’s largest mobile operator. After 15 minutes of disconnection, someone tries to log into Oleg’s account using a <a href="https://github.com/vysheng/tg">Telegram command-line interface</a> over <a href="https://atlas.torproject.org/#details/6C143720FFF8469EF6A5C5B4066366340CF6C0D1">the Tor network</a>. The process for authorizing a device to a Telegram accounts simply consists of entering a verification code received by SMS. Oleg doesn’t receive the message, but at 3:08AM the attacker enters the authorization code and gets access to Oleg’s account. Telegram displayed a notification about the newly logged in device, but Oleg was sleeping and only saw it in the morning. [EXPLAIN Cell phone coverage coming back.]</p>
+<hr />
 
-<p>Four minutes later, the same Tor exit node IP address, logs into <a href="https://twitter.com/alburov?lang=en">George Alburov’s</a> Telegram account.</p>
+<p>When firing up <a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser</a> today and checking if the browser was properly using Tor, I got the following scary message.</p>
 
-<h1 id="section">#</h1>
+<p><img src="/blog/img/tor/ipv6TorCheck.png" alt="Scary IPv6 Tor Check" /></p>
 
-<h1 id="section-1">#</h1>
+<h3 id="what-i-assume-happened">What I assume happened</h3>
 
-<p>With Telegram versed in how there was now hacking my account at night and probably George Alburi. It’s an interesting story.
-Events unfolded as follows:
-At 2:25 the night of MTS technical security department disables me delivery service of SMS-messages.
-After 15 minutes, at 2:40, someone with the Unix-console by IP-address 162.247.72.27 (this is one of the Tor anonymizer servers) Telegram sent a request for authorization of a new device with my phone number.
-I sent an SMS with a code that has not been delivered (the service is disabled for me).
-3:08 The attacker enters the authorization code and get access to my account. Telegram sent me an automatic notification about this (which I read in the morning).
-3:12 In the same way from the same IP-address (ie through the same session Tor) cracked account Jora Alburova.
-At 4:55 of technical security department MTS again includes me delivery service SMS.
-The reason for opening and closing the MTS service called I refused, offering to write a letter of inquiry.
-The main question is how the unknown persons had access to the code, which was sent to the SMS, but not delivered. Unfortunately, I have only one version: through SORM system or directly through the MTS tehbezopasnosti department (for example, on a call from the “competent authorities”). If there are other options - offer.
-The main recommendation for all users Telegram: connect the two-stage authorization (ie not only SMS, but also the password). This is done in the security settings.
-The main recommendation for the Telegram: not accept the authorization code, if it is not proof of delivery.</p>
+<p>Confused, I quickly checked if that was my IPv6 address. Thankfully it wasn’t. Tor browser was correctly proxying traffic over the Tor network but the exit node resolved <a href="check.torproject.org">check.torproject.org</a> over IPv6. A DNS lookup for <a href="check.torproject.org">check.torproject.org</a> gives:</p>
 
-<p>Based on those facts, it is likely that MTS was coerced by the .</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>~ ❯❯❯ host check.torproject.org
+check.torproject.org is an alias for chiwui.torproject.org.
+chiwui.torproject.org has address 138.201.14.212
+chiwui.torproject.org has IPv6 address 2a01:4f8:172:1b46::abba:20:1
+chiwui.torproject.org mail is handled by 10 eugeni.torproject.org.
+</code></pre>
+</div>
 
-<p>Unsurprisingly, MTS doesn’t publish a transparency report that could help evaluate the scale of those kinds of attacks.</p>
+<p>What likely happened is that the exit node connected to <a href="check.torproject.org">check.torproject.org</a> over IPv6. Since Tor doesn’t have full support for IPv6 yet, the exit node appeared as unknown, hence triggering this warning.</p>
 
-<p>https://twitter.com/alburov/status/725939782191206402?lang=en
-https://www.facebook.com/kozlovsky/posts/10208948934790884?pnref=story</p>
+<h3 id="quick-fix">Quick fix</h3>
 
-<p>In the Russian case, it appears that the
-- SS7 vulnerabilties
-- Coercing telecoms
-- IMSI catchers</p>
+<p>I think the warnings are scary and we shouldn’t be telling users to just ignore them. A quick easy fix would be to simply not have any IPv6 DNS records in <a href="check.torproject.org">check.torproject.org</a> as long as IPv6 isn’t fully supported.</p>
 
   </div>
 
   <div class="social-sharing">
     <a href="https://twitter.com/intent/follow?screen_name=FredericJacobs" title="Follow on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Follow me </a>|
-    <a href="https://twitter.com/intent/tweet?text=On SMS Logins II : an example from Telegram in Russia&url=https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/&via=FredericJacobs&related=FredericJacobs" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Tweet article </a>|
-		<a href="https://facebook.com/sharer.php?u=https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/" rel="nofollow" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook </a>|
+    <a href="https://twitter.com/intent/tweet?text=check.torproject.org & IPv6&url=https://www.fredericjacobs.com/blog/2016/08/17/torcheck-ipv6/&via=FredericJacobs&related=FredericJacobs" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Tweet article </a>|
+		<a href="https://facebook.com/sharer.php?u=https://www.fredericjacobs.com/blog/2016/08/17/torcheck-ipv6/" rel="nofollow" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook </a>|
 	  <a href="https://www.fredericjacobs.com/blog/feed.xml" title="Subscribe to RSS"> RSS </a>|
-    <a href="https://news.ycombinator.com/submitlink?u=https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/&t=On SMS Logins II : an example from Telegram in Russia" rel="nofollow" title="Share on Hacker News" class="hn-share-button" target="_blank"> Hacker News </a>
+    <a href="https://news.ycombinator.com/submitlink?u=https://www.fredericjacobs.com/blog/2016/08/17/torcheck-ipv6/&t=check.torproject.org & IPv6" rel="nofollow" title="Share on Hacker News" class="hn-share-button" target="_blank"> Hacker News </a>
   </div>
   <script src="/blog/JS/hn.js" async defer></script>
 
