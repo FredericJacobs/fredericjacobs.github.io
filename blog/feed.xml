@@ -5,8 +5,8 @@
     <description>Frederic Jacobs' Personal Blog</description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 17 Aug 2016 23:19:51 -0700</pubDate>
-    <lastBuildDate>Wed, 17 Aug 2016 23:19:51 -0700</lastBuildDate>
+    <pubDate>Wed, 24 Aug 2016 15:32:11 -0700</pubDate>
+    <lastBuildDate>Wed, 24 Aug 2016 15:32:11 -0700</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -38,6 +38,8 @@ chiwui.torproject.org mail is handled by 10 eugeni.torproject.org.
 &lt;p&gt;I think the warnings are scary and we shouldn’t be telling users to just ignore them. A quick easy fix would be to simply not have any IPv6 DNS records in &lt;a href=&quot;check.torproject.org&quot;&gt;check.torproject.org&lt;/a&gt; as long as IPv6 isn’t fully supported.&lt;/p&gt;
 
 &lt;p&gt;Any thoughts or suggestions? Discuss on &lt;a href=&quot;https://lists.torproject.org/pipermail/tor-dev/2016-August/011304.html&quot;&gt;Tor-Dev&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Update (24th of August)&lt;/em&gt;: The AAAA record &lt;a href=&quot;https://trac.torproject.org/projects/tor/ticket/19940&quot;&gt;was removed&lt;/a&gt;, waiting for a more broader IPv6 support in Tor.&lt;/p&gt;
 </description>
         <pubDate>Wed, 17 Aug 2016 22:30:00 -0700</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/08/17/torcheck-ipv6/</link>
