@@ -5,9 +5,59 @@
     <description>Frederic Jacobs' Personal Blog</description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Sep 2016 07:29:00 -0700</pubDate>
-    <lastBuildDate>Tue, 06 Sep 2016 07:29:00 -0700</lastBuildDate>
-    <generator>Jekyll v3.2.1</generator>
+    <pubDate>Fri, 20 Jan 2017 14:22:06 +0100</pubDate>
+    <lastBuildDate>Fri, 20 Jan 2017 14:22:06 +0100</lastBuildDate>
+    <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>On the &quot;WhatsApp backdoor&quot;, Trade-Offs and Opportunistic Authentication</title>
+        <description>&lt;p&gt;A week ago, The Guardian broke an “exclusive” story titled &lt;a href=&quot;http://web.archive.org/web/20170113123010/https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages&quot;&gt;“WhatsApp backdoor allows snooping on encrypted messages”&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-reporting&quot;&gt;The Reporting&lt;/h3&gt;
+
+&lt;p&gt;My first reaction when I skimmed through the story is that this was nothing new . The Guardian’s source had already blogged about it on the &lt;a href=&quot;https://tobi.rocks/2016/04/whats-app-retransmission-vulnerability/&quot;&gt;16th of April&lt;/a&gt; and given &lt;a href=&quot;https://youtu.be/VmgfXkVQwpc?t=2903&quot;&gt;a lightning talk at CCC&lt;/a&gt; explaining the issue. Other people in the security community had already looked into this behavior too. Running the story as “exclusive” and sending a push notification to all subscribers as if it were breaking time-sensitive news, while this was known in the security community for months, seems disingenuous.&lt;/p&gt;
+
+&lt;p&gt;The other issue I had with the reporting of this story was the framing that this was a backdoor. This claim has been debunked by now, not matching the &lt;a href=&quot;https://www.zdziarski.com/blog/?p=6077&quot;&gt;technical definition of a backdoor&lt;/a&gt;. The Guardian ended up &lt;a href=&quot;http://web.archive.org/web/20170120044416/https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages&quot;&gt;rephrasing their headline&lt;/a&gt; to reflect that this was not a backdoor. While they did change that important categorization, they left the reaction and analysis from the people who commented on the story, largely unchanged.&lt;/p&gt;
+
+&lt;p&gt;Original:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Professor Kirstie Ball, co-director and founder of the Centre for Research into Information, Surveillance and Privacy, called the existence of a &lt;strong&gt;backdoor&lt;/strong&gt; within WhatsApp’s encryption “a gold mine for security agencies” and “a huge betrayal of user trust”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;After adjusting headline:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Professor Kirstie Ball, co-director and founder of the Centre for Research into Information, Surveillance and Privacy, called the existence of a &lt;strong&gt;vulnerability&lt;/strong&gt; within WhatsApp’s encryption “a gold mine for security agencies” and “a huge betrayal of user trust”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While I do agree that a backdoor would have been a huge betrayal of user trust, I do not agree that this particular issue was a betrayal of user trust. Unlike with a backdoor, malicious intent is improbable and the edited story should have reflected that.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-trade-off&quot;&gt;The Trade-Off&lt;/h3&gt;
+
+&lt;p&gt;Message encryption is maturing as a field and has some pretty elegant solutions deployed in “the real world”, “usable authentication” is still an open problem.&lt;/p&gt;
+
+&lt;p&gt;WhatsApp is known for being &lt;a href=&quot;http://www.erlang-factory.com/upload/presentations/558/efsf2012-whatsapp-scaling.pdf&quot;&gt;very reliable&lt;/a&gt; and their users love them for that. They decided that unread messages, should be retransmitted upon a change of phone number, matching the behavior they had before adopting end-to-end encryption or any “cloud-based” messenger. Instead of losing the messages that were sent and never read, WhatsApp will automatically retransmit them to the recipient’s new phone, without letting the sender verify the new “security code” first. Since &lt;a href=&quot;https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/&quot;&gt;phone networks, that are used for authentication by mobile messaging apps, are insecure&lt;/a&gt; or WhatsApp servers could get hacked, this leads to some practical attacks that would lead to the compromise of a streak of unread messages upon retransmission.&lt;/p&gt;
+
+&lt;p&gt;You can agree that this was a reasonable trade-off to make in the name of reliability. But such security trade-offs are nothing new, and they are important. When Signal came around, many praised it for adopting a TOFU (Trust On First Use) model. Most “secure messaging” clients up to then, the biggest one being OTR, had been bugging users about fingerprint verification, significantly hurting the adoption of end-to-end encryption. With Signal’s TOFU model, keys are implicitly trusted on the first use. Peers may then confirm that trust by verify their keys through an out-of-band channel. That’s a potential security risk. Does that make Signal backdoored or inherently insecure? No. It was a trade-off that made people actually use end-to-end encryption.&lt;/p&gt;
+
+&lt;p&gt;You can definitely discuss the merits of such trade-offs but dismissing them as backdoors will just drive people away to unencrypted or opportunistically encrypted solutions.&lt;/p&gt;
+
+&lt;p&gt;WhatsApp transitioned from plaintext to opportunistic encryption to all the messages, from over a billion people, being encrypted by default. Then, once that was complete, enabled the phase we are currently in of “&lt;strong&gt;opportunistic authentication&lt;/strong&gt;” until we find a scalable solution to the authentication problem.&lt;/p&gt;
+
+&lt;p&gt;Organizations like &lt;a href=&quot;https://simplysecure.org&quot;&gt;SimplySecure&lt;/a&gt;, or mailing lists such as Trevor Perrin’s &lt;a href=&quot;https://moderncrypto.org/mailman/listinfo/messaging&quot;&gt;Secure Messaging mailing&lt;/a&gt; lists, promote great ideas for tackling these issues. Let’s keep things moving forward to a place where we can all confidently say that we have “encrypted and authenticated communications” by default.&lt;/p&gt;
+
+&lt;h3 id=&quot;further-readings&quot;&gt;Further readings&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://tonyarcieri.com/key-rotation-user-experience-crypto-reporting&quot;&gt;Key rotation, user experience, and crypto reporting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.eff.org/deeplinks/2017/01/google-launches-key-transparency-while-tradeoff-whatsapp-called-backdoor&quot;&gt;Google Launches Key Transparency While a Trade-Off in WhatsApp Is Called a Backdoor&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 20 Jan 2017 14:00:00 +0100</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2017/01/20/whatsapp-backdoor/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2017/01/20/whatsapp-backdoor/</guid>
+        
+        
+      </item>
     
       <item>
         <title>check.torproject.org &amp; IPv6</title>
@@ -41,9 +91,9 @@ chiwui.torproject.org mail is handled by 10 eugeni.torproject.org.
 
 &lt;p&gt;&lt;em&gt;Update (24th of August)&lt;/em&gt;: The AAAA record &lt;a href=&quot;https://trac.torproject.org/projects/tor/ticket/19940&quot;&gt;was removed&lt;/a&gt;, waiting for a more broader IPv6 support in Tor.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 17 Aug 2016 22:30:00 -0700</pubDate>
-        <link>https://www.fredericjacobs.com/blog/2016/08/17/torcheck-ipv6/</link>
-        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/08/17/torcheck-ipv6/</guid>
+        <pubDate>Thu, 18 Aug 2016 07:30:00 +0200</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2016/08/18/torcheck-ipv6/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/08/18/torcheck-ipv6/</guid>
         
         
       </item>
@@ -100,9 +150,9 @@ chiwui.torproject.org mail is handled by 10 eugeni.torproject.org.
   &lt;p&gt;Always use end-to-end encryption. As the underlying authentication layer can be spoofed, verify fingerprints for important communications.&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-        <pubDate>Fri, 29 Apr 2016 23:30:00 -0700</pubDate>
-        <link>https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/</link>
-        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/04/29/more-on-sms-logins/</guid>
+        <pubDate>Sat, 30 Apr 2016 08:30:00 +0200</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2016/04/30/more-on-sms-logins/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/04/30/more-on-sms-logins/</guid>
         
         
       </item>
@@ -190,7 +240,7 @@ MK-2 ----+      |       |
 
 &lt;p&gt;While I do think it’s important to move to new primitives soon, cryptographic protocols can be used to mitigate the risk of anyone being able to break your public-key primitives by relying on well-proven symmetric key systems. Most people compare products solely on the primitives or key sizes, making abstractions of protocols and implementations, which are the global picture that truly matters.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 07 Apr 2016 06:00:00 -0700</pubDate>
+        <pubDate>Thu, 07 Apr 2016 15:00:00 +0200</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/04/07/qc-axolotl/</guid>
         
@@ -293,7 +343,7 @@ MK-2 ----+      |       |
 
 &lt;p&gt;&lt;strong&gt;Update (10th June 2016)&lt;/strong&gt; : Added video of the talk.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 16 Mar 2016 15:00:00 -0700</pubDate>
+        <pubDate>Wed, 16 Mar 2016 23:00:00 +0100</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/03/16/tedx/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/03/16/tedx/</guid>
         
@@ -342,7 +392,7 @@ MK-2 ----+      |       |
 &lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;25823f7b79014e63955509834f1a4c80&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
 
 </description>
-        <pubDate>Tue, 02 Feb 2016 14:25:00 -0800</pubDate>
+        <pubDate>Tue, 02 Feb 2016 23:25:00 +0100</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/02/02/stallmanism/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/02/02/stallmanism/</guid>
         
@@ -437,7 +487,7 @@ MK-2 ----+      |       |
 
 &lt;p&gt;Probably see you on a NIST, CFRG or PQCrypto mailing list to discuss this further!&lt;/p&gt;
 </description>
-        <pubDate>Wed, 27 Jan 2016 12:00:00 -0800</pubDate>
+        <pubDate>Wed, 27 Jan 2016 21:00:00 +0100</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/01/27/NSA-QC/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/01/27/NSA-QC/</guid>
         
@@ -528,7 +578,7 @@ MK-2 ----+      |       |
 
 &lt;p&gt;&lt;strong&gt;Update II:&lt;/strong&gt;  I &lt;a href=&quot;/blog/2016/04/30/more-on-sms-logins/&quot;&gt;posted in April 2016 an update&lt;/a&gt; after new cases emerged in Russia and Iran.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 14 Jan 2016 05:00:00 -0800</pubDate>
+        <pubDate>Thu, 14 Jan 2016 14:00:00 +0100</pubDate>
         <link>https://www.fredericjacobs.com/blog/2016/01/14/sms-login/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2016/01/14/sms-login/</guid>
         
@@ -756,7 +806,7 @@ Next, each user would have to keep his primes absolutely secret, forcing on each
 
 &lt;p&gt;There are many more topics covered that I have decided to leave out of this summary. If this sounded interesting, you might want to take a look in the COMSEC guide for yourself!&lt;/p&gt;
 </description>
-        <pubDate>Fri, 18 Dec 2015 09:10:00 -0800</pubDate>
+        <pubDate>Fri, 18 Dec 2015 18:10:00 +0100</pubDate>
         <link>https://www.fredericjacobs.com/blog/2015/12/18/COMSEC/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2015/12/18/COMSEC/</guid>
         
@@ -775,7 +825,7 @@ Next, each user would have to keep his primes absolutely secret, forcing on each
 
 &lt;p&gt;Note: Previous &lt;a href=&quot;https://medium.com/@FredericJacobs&quot;&gt;blog posts&lt;/a&gt; will stay on Medium.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 22 Nov 2015 06:33:00 -0800</pubDate>
+        <pubDate>Sun, 22 Nov 2015 15:33:00 +0100</pubDate>
         <link>https://www.fredericjacobs.com/blog/2015/11/22/new-home/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2015/11/22/new-home/</guid>
         
