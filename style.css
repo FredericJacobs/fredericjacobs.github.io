@@ -82,6 +82,10 @@ a:link {
   content: " / ";
   color: #E9423A;
 }
+.at:before {
+  content: " @ ";
+  color: #E9423A;
+}
 @media (max-width: 321px) {
   #fop {
     position: static;
