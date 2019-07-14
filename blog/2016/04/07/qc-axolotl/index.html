@@ -118,7 +118,7 @@
 
 <p>The ratchet is initialized with a <code class="highlighter-rouge">RootKey</code> that is derived from a key exchange, in the case of Signal or WhatsApp, that is the <a href="https://whispersystems.org/blog/simplifying-otr-deniability/">3DH key exchange</a>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>MK      CK      RK      CK      MK
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MK      CK      RK      CK      MK
 --      --      --      --      --
                 |
                 |
@@ -134,8 +134,7 @@ MK-1 ----+      |       |
          |      |       +---- MK-0
 MK-2 ----+      |       |
                 |       +---- MK-1
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>An important fact is that each new <code class="highlighter-rouge">RootKey</code> is derived through a PRF from a previous <code class="highlighter-rouge">RootKey</code> and the output of DH key agreement. The fact that it is derived, not only from a DH agreement, but also from a previous value is a valuable mitigation when we think about the threat posed by quantum computers. If the PRF used for the derivation is secure, then even if the adversary can break the ephemeral DH part, he won’t be able to recover the new <code class="highlighter-rouge">RootKey</code> without the previous one.</p>
 

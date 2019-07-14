@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>check.torproject.org & IPv6</title>
-  <meta name="description" content="TLDR: Exit nodes with IPv6 addresses connect to check.torproject.org over IPv6, causing the IP not to be recognised as being one of an exit node. This trigge...">
+  <title>Presenting at WWDC - Introducing CryptoKit</title>
+  <meta name="description" content="I was happy to present at WWDC this year. You can find the video on developer.apple.com, or in the WWDC app. It was a pleasure to introduce a fast, easy-to-u...">
 
   <link rel="stylesheet" href="/blog/css/main.css">
-  <link rel="canonical" href="https://www.fredericjacobs.com/blog/2016/08/18/torcheck-ipv6/">
+  <link rel="canonical" href="https://www.fredericjacobs.com/blog/2017/08/01/introducing-cryptokit/">
   <link rel="alternate" type="application/rss+xml" title="BrainOverfl0w" href="https://www.fredericjacobs.com/blog/feed.xml">
 </head>
 
@@ -59,48 +59,21 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">check.torproject.org & IPv6</h1>
-    <p class="post-meta"><time datetime="2016-08-18T07:30:00+02:00" itemprop="datePublished">Aug 18, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">Presenting at WWDC - Introducing CryptoKit</h1>
+    <p class="post-meta"><time datetime="2017-08-01T01:00:00+02:00" itemprop="datePublished">Aug 1, 2017</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p><em>TLDR</em>: Exit nodes with IPv6 addresses connect to check.torproject.org over IPv6, causing the IP not to be recognised as being one of an exit node. This triggers a scary “Sorry. You are not using Tor.” warning.</p>
-
-<hr />
-
-<p>When firing up <a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser</a> today and checking if the browser was properly using Tor, I got the following scary message.</p>
-
-<p><img src="/blog/img/tor/ipv6TorCheck.png" alt="Scary IPv6 Tor Check" /></p>
-
-<h3 id="what-i-assume-happened">What I assume happened</h3>
-
-<p>Confused, I quickly checked if that was my IPv6 address. Thankfully it wasn’t. Tor browser was correctly proxying traffic over the Tor network but the exit node resolved <a href="check.torproject.org">check.torproject.org</a> over IPv6. A DNS lookup for <a href="check.torproject.org">check.torproject.org</a> gives:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~ ❯❯❯ host check.torproject.org
-check.torproject.org is an alias for chiwui.torproject.org.
-chiwui.torproject.org has address 138.201.14.212
-chiwui.torproject.org has IPv6 address 2a01:4f8:172:1b46::abba:20:1
-chiwui.torproject.org mail is handled by 10 eugeni.torproject.org.
-</code></pre></div></div>
-
-<p>What likely happened is that the exit node connected to <a href="check.torproject.org">check.torproject.org</a> over IPv6. Since Tor doesn’t have full support for IPv6 yet, the exit node appeared as unknown, hence triggering this warning.</p>
-
-<h3 id="quick-fix">Quick fix</h3>
-
-<p>I think the warnings are scary and we shouldn’t be telling users to just ignore them. A quick easy fix would be to simply not have any IPv6 DNS records in <a href="check.torproject.org">check.torproject.org</a> as long as IPv6 isn’t fully supported.</p>
-
-<p>Any thoughts or suggestions? Discuss on <a href="https://lists.torproject.org/pipermail/tor-dev/2016-August/011304.html">Tor-Dev</a>.</p>
-
-<p><em>Update (24th of August)</em>: The AAAA record <a href="https://trac.torproject.org/projects/tor/ticket/19940">was removed</a>, waiting for a more broader IPv6 support in Tor.</p>
+    <p>I was happy to present at WWDC this year. You can find <a href="https://developer.apple.com/videos/play/wwdc2019/709/">the video on developer.apple.com</a>, or in the WWDC app. It was a pleasure to introduce a fast, easy-to-use and secure cryptographic (as in cryptography!) library for Swift.</p>
 
   </div>
 
   <div class="social-sharing">
     <a href="https://twitter.com/intent/follow?screen_name=FredericJacobs" title="Follow on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Follow me </a>|
-    <a href="https://twitter.com/intent/tweet?text=check.torproject.org & IPv6&url=https://www.fredericjacobs.com/blog/2016/08/18/torcheck-ipv6/&via=FredericJacobs&related=FredericJacobs" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Tweet article </a>|
-		<a href="https://facebook.com/sharer.php?u=https://www.fredericjacobs.com/blog/2016/08/18/torcheck-ipv6/" rel="nofollow" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook </a>|
+    <a href="https://twitter.com/intent/tweet?text=Presenting at WWDC - Introducing CryptoKit&url=https://www.fredericjacobs.com/blog/2017/08/01/introducing-cryptokit/&via=FredericJacobs&related=FredericJacobs" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Tweet article </a>|
+		<a href="https://facebook.com/sharer.php?u=https://www.fredericjacobs.com/blog/2017/08/01/introducing-cryptokit/" rel="nofollow" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook </a>|
 	  <a href="https://www.fredericjacobs.com/blog/feed.xml" title="Subscribe to RSS"> RSS </a>|
-    <a href="https://news.ycombinator.com/submitlink?u=https://www.fredericjacobs.com/blog/2016/08/18/torcheck-ipv6/&t=check.torproject.org & IPv6" rel="nofollow" title="Share on Hacker News" class="hn-share-button" target="_blank"> Hacker News </a>
+    <a href="https://news.ycombinator.com/submitlink?u=https://www.fredericjacobs.com/blog/2017/08/01/introducing-cryptokit/&t=Presenting at WWDC - Introducing CryptoKit" rel="nofollow" title="Share on Hacker News" class="hn-share-button" target="_blank"> Hacker News </a>
   </div>
   <script src="/blog/JS/hn.js" async defer></script>
 

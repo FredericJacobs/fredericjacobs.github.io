@@ -5,9 +5,20 @@
     <description>Frederic Jacobs' Personal Blog</description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 Jan 2017 15:51:19 +0100</pubDate>
-    <lastBuildDate>Fri, 20 Jan 2017 15:51:19 +0100</lastBuildDate>
-    <generator>Jekyll v3.3.1</generator>
+    <pubDate>Mon, 15 Jul 2019 01:04:56 +0200</pubDate>
+    <lastBuildDate>Mon, 15 Jul 2019 01:04:56 +0200</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Presenting at WWDC - Introducing CryptoKit</title>
+        <description>&lt;p&gt;I was happy to present at WWDC this year. You can find &lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2019/709/&quot;&gt;the video on developer.apple.com&lt;/a&gt;, or in the WWDC app. It was a pleasure to introduce a fast, easy-to-use and secure cryptographic (as in cryptography!) library for Swift.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 01 Aug 2017 01:00:00 +0200</pubDate>
+        <link>https://www.fredericjacobs.com/blog/2017/08/01/introducing-cryptokit/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2017/08/01/introducing-cryptokit/</guid>
+        
+        
+      </item>
     
       <item>
         <title>On the &quot;WhatsApp backdoor&quot;, Trade-Offs and Opportunistic Authentication</title>
@@ -53,8 +64,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 20 Jan 2017 14:00:00 +0100</pubDate>
-        <link>https://www.fredericjacobs.com/blog/2017/01/20/whatsapp-backdoor/</link>
-        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2017/01/20/whatsapp-backdoor/</guid>
+        <link>https://www.fredericjacobs.com/blog/2017/01/20/whatsapp-backdoor-copy/</link>
+        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2017/01/20/whatsapp-backdoor-copy/</guid>
         
         
       </item>
@@ -73,13 +84,12 @@
 
 &lt;p&gt;Confused, I quickly checked if that was my IPv6 address. Thankfully it wasn’t. Tor browser was correctly proxying traffic over the Tor network but the exit node resolved &lt;a href=&quot;check.torproject.org&quot;&gt;check.torproject.org&lt;/a&gt; over IPv6. A DNS lookup for &lt;a href=&quot;check.torproject.org&quot;&gt;check.torproject.org&lt;/a&gt; gives:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~ ❯❯❯ host check.torproject.org
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~ ❯❯❯ host check.torproject.org
 check.torproject.org is an alias for chiwui.torproject.org.
 chiwui.torproject.org has address 138.201.14.212
 chiwui.torproject.org has IPv6 address 2a01:4f8:172:1b46::abba:20:1
 chiwui.torproject.org mail is handled by 10 eugeni.torproject.org.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;What likely happened is that the exit node connected to &lt;a href=&quot;check.torproject.org&quot;&gt;check.torproject.org&lt;/a&gt; over IPv6. Since Tor doesn’t have full support for IPv6 yet, the exit node appeared as unknown, hence triggering this warning.&lt;/p&gt;
 
@@ -213,7 +223,7 @@ chiwui.torproject.org mail is handled by 10 eugeni.torproject.org.
 
 &lt;p&gt;The ratchet is initialized with a &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; that is derived from a key exchange, in the case of Signal or WhatsApp, that is the &lt;a href=&quot;https://whispersystems.org/blog/simplifying-otr-deniability/&quot;&gt;3DH key exchange&lt;/a&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MK      CK      RK      CK      MK
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MK      CK      RK      CK      MK
 --      --      --      --      --
                 |
                 |
@@ -229,8 +239,7 @@ MK-1 ----+      |       |
          |      |       +---- MK-0
 MK-2 ----+      |       |
                 |       +---- MK-1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;An important fact is that each new &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; is derived through a PRF from a previous &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; and the output of DH key agreement. The fact that it is derived, not only from a DH agreement, but also from a previous value is a valuable mitigation when we think about the threat posed by quantum computers. If the PRF used for the derivation is secure, then even if the adversary can break the ephemeral DH part, he won’t be able to recover the new &lt;code class=&quot;highlighter-rouge&quot;&gt;RootKey&lt;/code&gt; without the previous one.&lt;/p&gt;
 
@@ -809,25 +818,6 @@ Next, each user would have to keep his primes absolutely secret, forcing on each
         <pubDate>Fri, 18 Dec 2015 18:10:00 +0100</pubDate>
         <link>https://www.fredericjacobs.com/blog/2015/12/18/COMSEC/</link>
         <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2015/12/18/COMSEC/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>New Home</title>
-        <description>&lt;p&gt;It’s easy to be lazy these days and give up on the decentralized property of the Internet. You can find pretty much everything that requires more than a minute to set up “as a service”. I hadn’t self-hosted my blog for years. What prompted me to go back to self-hosting from Medium?&lt;/p&gt;
-
-&lt;p&gt;Tracking of readers was a concern but didn’t bothered me enough to make the effort of self-hosting. I was increasingly frustrated about not having control over the layout of my posts, not being able to embed code without having to embed a GitHub Gist. And since Medium isn’t monetized yet, I had some uncertainties about the future of the platform.&lt;/p&gt;
-
-&lt;p&gt;Welcome to this new home.&lt;/p&gt;
-
-&lt;p&gt;The pleasure of self-hosting my blog also comes with my renewed love for RSS. You can &lt;a href=&quot;https://www.fredericjacobs.com/blog/feed.xml&quot;&gt;subscribe&lt;/a&gt; to get all the blog posts, without the noise of having to &lt;a href=&quot;https://twitter.com/FredericJacobs&quot;&gt;follow me on Twitter&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note: Previous &lt;a href=&quot;https://medium.com/@FredericJacobs&quot;&gt;blog posts&lt;/a&gt; will stay on Medium.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 22 Nov 2015 15:33:00 +0100</pubDate>
-        <link>https://www.fredericjacobs.com/blog/2015/11/22/new-home/</link>
-        <guid isPermaLink="true">https://www.fredericjacobs.com/blog/2015/11/22/new-home/</guid>
         
         
       </item>
