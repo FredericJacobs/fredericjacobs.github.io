@@ -5,13 +5,13 @@
     <description>Frederic Jacobs' Personal Blog</description>
     <link>https://www.fredericjacobs.com/blog/</link>
     <atom:link href="https://www.fredericjacobs.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 11 Aug 2019 17:01:45 +0200</pubDate>
-    <lastBuildDate>Sun, 11 Aug 2019 17:01:45 +0200</lastBuildDate>
+    <pubDate>Sun, 11 Aug 2019 17:07:28 +0200</pubDate>
+    <lastBuildDate>Sun, 11 Aug 2019 17:07:28 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>Presenting at WWDC - Introducing CryptoKit</title>
-        <description>&lt;p&gt;I was happy to present at WWDC this year. You can find &lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2019/709/&quot;&gt;the video on developer.apple.com&lt;/a&gt;, or in the WWDC app. It was a pleasure to introduce a fast, easy-to-use and secure cryptographic (as in cryptography!) library for Swift.&lt;/p&gt;
+        <description>&lt;p&gt;I was happy to present at WWDC this year. You can find &lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2019/709/&quot;&gt;the video on developer.apple.com&lt;/a&gt;, or in the WWDC app. It was a pleasure to introduce a fast, easy-to-use and secure crypto (as in cryptography!) library for Swift.&lt;/p&gt;
 </description>
         <pubDate>Thu, 01 Aug 2019 01:00:00 +0200</pubDate>
         <link>https://www.fredericjacobs.com/blog/2019/08/01/introducing-cryptokit/</link>
